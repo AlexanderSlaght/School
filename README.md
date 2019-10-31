@@ -1,2 +1,2 @@
-# School
-For school projects.
+# TP2
+For TP2.
