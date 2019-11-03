@@ -1,0 +1,71 @@
+<!--Insertion de commentaires-->
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Stagiaire 1-->
+
+<!--
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<stagiaire>
+	<numeroEmploye></numeroEmploye>
+	<nom></nom>
+	<numeroTelephone></numeroTelephone>
+	<courriel></courriel>
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+-->
+
+<!--Autre facon-->
+
+<stagiaire numeroEmploye="1234" nom="EricTrottier" numeroTelephone="111-111-111" courriel="EricTrottier1234@hotmail.com">
+	<stages titre="plumber" dateDebut="12-7-2019" dateFin="12-11-2019" nomSuperviseur="Madame Poire" commentaire="Ye mieux d&quot; etre bon le ptit tabarnak">
+
+<stagiaire numeroEmploye="4321" nom="RiettortCire" numeroTelephone="121-232-3434" courriel="RiettortCire4321@gmail.com">
+	<stages titre="TRUIIIE" dateDebut="25-5-2019" dateFin="25-9-2019" nomSuperviseur="Lucien Bouchard" commentaire="ALALALALALALALALALALA">
+
+<stagiaire numeroEmploye="5655" nom="JoseBoudreault" numeroTelephone="666-666-6666" courriel="Qualinet@hotmail.com">
+	<stages titre="Passeu de moppe" dateDebut="17-8-2018" dateFin="17-12-2018" nomSuperviseur="Monsieur Net" commentaire="Clean comme mon coco">
+
+	<stages titre="Laveu de plancher" dateDebut="18-12-2018" dateFin="18-04-2019" nomSuperviseur="Monsieur Net" commentaire="Clean comme mon coco">
+
+<stagiaire numeroEmploye="" nom="" numeroTelephone="" courriel="">
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+
+<!--
+<stagiaire numeroEmploye="" nom="" numeroTelephone="" courriel="">
+	<stages titre="" dateDebut="" dateFin="" nomSuperviseur="" commentaire="">
+-->
+

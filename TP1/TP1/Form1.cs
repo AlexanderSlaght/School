@@ -17,5 +17,51 @@ namespace TP1
             InitializeComponent();
         }
 
+        private void ButtonAjouterStage_Click(object sender, EventArgs e)
+        {
+            foreach (Control ctrl in groupBoxStage.Controls)
+            {
+                ctrl.Enabled = true;
+            }
+        }
+
+        private void TextBoxTitre_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.textBoxTitre.Text))
+            {
+                e.Cancel = true;
+                this.errorProvider.SetError(textBoxTitre,
+                    "Le champs titre ne doit pas etre vide.");
+            }
+            else
+            {
+                e.Cancel = false;
+                this.errorProvider.Clear();
+            }
+        }
+
+        private void TextBoxNomSuperviseur_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.textBoxNomSuperviseur.Text))
+            {
+                e.Cancel = true;
+                this.errorProvider.SetError(textBoxNomSuperviseur,
+                    "Le nom du superviseur ne doit pas etre vide");
+            }
+            else
+            {
+                e.Cancel = false;
+                this.errorProvider.Clear();
+            }
+        }
+
+        private void ButtonValider_Click(object sender, EventArgs e)
+        {
+            //A coder
+            foreach (Control ctrl in groupBoxStage.Controls)
+            {
+                ctrl.Enabled = true;
+            }
+        }
     }
 }
