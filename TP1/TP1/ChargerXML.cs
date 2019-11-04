@@ -23,7 +23,18 @@ namespace TP1
 
         private void ButtonNouvelleListe_Click(object sender, EventArgs e)
         {
-            ManipulationBaseDonnees.InitialiseListeDuStagiaire();
+            ListeDeStagiaire.stagiaires = new List<Stagiaire>();
+            FormPrincipal nouvelleFenetre = new FormPrincipal();
+            nouvelleFenetre.Show();
+            this.Close();
+        }
+
+        private void ChargerXML_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.ExitThread();
+            }
         }
     }
 }

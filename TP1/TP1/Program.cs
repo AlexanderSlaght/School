@@ -16,7 +16,9 @@ namespace TP1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ChargerXML());
+            ChargerXML premiereFenetre = new ChargerXML();
+            premiereFenetre.Show();
+            Application.Run();
         }
     }
 }

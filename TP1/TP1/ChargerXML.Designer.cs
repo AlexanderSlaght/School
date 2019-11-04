@@ -75,6 +75,7 @@
             this.Name = "ChargerXML";
             this.Text = "Gestion De Stage";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChargerXML_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChargerXML_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

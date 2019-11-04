@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace TP1
 {
-    public class ListeDeStagiaire
+    public static class ListeDeStagiaire
     {
-        public List<Stagiaire> stagiaires { get; set; }
+        public static List<Stagiaire> stagiaires { get; set; }
 
-        public ListeDeStagiaire()
-        {
-            this.stagiaires = new List<Stagiaire>();
-        }
     }
 }
