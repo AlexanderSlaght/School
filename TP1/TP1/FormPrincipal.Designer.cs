@@ -65,6 +65,9 @@
             this.textBoxNomSuperviseur = new System.Windows.Forms.TextBox();
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonValistagiaire = new System.Windows.Forms.Button();
+            this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
+            this.buttonChargerXML = new System.Windows.Forms.Button();
             this.groupBoxListe.SuspendLayout();
             this.groupBoxStagiaire.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
@@ -80,9 +83,9 @@
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
             this.groupBoxListe.Controls.Add(this.listBoxstagiaire);
             this.groupBoxListe.Location = new System.Drawing.Point(16, 6);
-            this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxListe.Name = "groupBoxListe";
-            this.groupBoxListe.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxListe.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxListe.Size = new System.Drawing.Size(376, 480);
             this.groupBoxListe.TabIndex = 0;
             this.groupBoxListe.TabStop = false;
@@ -91,7 +94,7 @@
             // buttonSupprimerStagiaire
             // 
             this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(101, 439);
-            this.buttonSupprimerStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSupprimerStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
             this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(172, 28);
             this.buttonSupprimerStagiaire.TabIndex = 3;
@@ -101,7 +104,7 @@
             // buttonModifierStagiaire
             // 
             this.buttonModifierStagiaire.Location = new System.Drawing.Point(196, 404);
-            this.buttonModifierStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonModifierStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.buttonModifierStagiaire.Name = "buttonModifierStagiaire";
             this.buttonModifierStagiaire.Size = new System.Drawing.Size(172, 28);
             this.buttonModifierStagiaire.TabIndex = 2;
@@ -111,7 +114,7 @@
             // buttonAjouterStagiaire
             // 
             this.buttonAjouterStagiaire.Location = new System.Drawing.Point(8, 404);
-            this.buttonAjouterStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAjouterStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
             this.buttonAjouterStagiaire.Size = new System.Drawing.Size(180, 28);
             this.buttonAjouterStagiaire.TabIndex = 1;
@@ -121,7 +124,7 @@
             // buttonRechercher
             // 
             this.buttonRechercher.Location = new System.Drawing.Point(268, 369);
-            this.buttonRechercher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRechercher.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRechercher.Name = "buttonRechercher";
             this.buttonRechercher.Size = new System.Drawing.Size(100, 28);
             this.buttonRechercher.TabIndex = 0;
@@ -131,7 +134,7 @@
             // textBoxRecherche
             // 
             this.textBoxRecherche.Location = new System.Drawing.Point(8, 372);
-            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(251, 22);
             this.textBoxRecherche.TabIndex = 0;
@@ -141,13 +144,15 @@
             this.listBoxstagiaire.FormattingEnabled = true;
             this.listBoxstagiaire.ItemHeight = 16;
             this.listBoxstagiaire.Location = new System.Drawing.Point(8, 23);
-            this.listBoxstagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxstagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxstagiaire.Name = "listBoxstagiaire";
             this.listBoxstagiaire.Size = new System.Drawing.Size(359, 340);
             this.listBoxstagiaire.TabIndex = 0;
             // 
             // groupBoxStagiaire
             // 
+            this.groupBoxStagiaire.Controls.Add(this.buttonAnnulerStagiaire);
+            this.groupBoxStagiaire.Controls.Add(this.buttonValistagiaire);
             this.groupBoxStagiaire.Controls.Add(this.buttonSupprimerStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonModifierStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonAjouterStage);
@@ -162,9 +167,9 @@
             this.groupBoxStagiaire.Controls.Add(this.labelNom);
             this.groupBoxStagiaire.Controls.Add(this.labelNumero);
             this.groupBoxStagiaire.Location = new System.Drawing.Point(400, 6);
-            this.groupBoxStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxStagiaire.Name = "groupBoxStagiaire";
-            this.groupBoxStagiaire.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStagiaire.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxStagiaire.Size = new System.Drawing.Size(376, 540);
             this.groupBoxStagiaire.TabIndex = 1;
             this.groupBoxStagiaire.TabStop = false;
@@ -172,8 +177,8 @@
             // 
             // buttonSupprimerStage
             // 
-            this.buttonSupprimerStage.Location = new System.Drawing.Point(110, 506);
-            this.buttonSupprimerStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSupprimerStage.Location = new System.Drawing.Point(111, 458);
+            this.buttonSupprimerStage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSupprimerStage.Name = "buttonSupprimerStage";
             this.buttonSupprimerStage.Size = new System.Drawing.Size(148, 28);
             this.buttonSupprimerStage.TabIndex = 4;
@@ -182,8 +187,8 @@
             // 
             // buttonModifierStage
             // 
-            this.buttonModifierStage.Location = new System.Drawing.Point(201, 470);
-            this.buttonModifierStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonModifierStage.Location = new System.Drawing.Point(205, 422);
+            this.buttonModifierStage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonModifierStage.Name = "buttonModifierStage";
             this.buttonModifierStage.Size = new System.Drawing.Size(148, 28);
             this.buttonModifierStage.TabIndex = 4;
@@ -192,8 +197,8 @@
             // 
             // buttonAjouterStage
             // 
-            this.buttonAjouterStage.Location = new System.Drawing.Point(17, 470);
-            this.buttonAjouterStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAjouterStage.Location = new System.Drawing.Point(12, 422);
+            this.buttonAjouterStage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAjouterStage.Name = "buttonAjouterStage";
             this.buttonAjouterStage.Size = new System.Drawing.Size(156, 28);
             this.buttonAjouterStage.TabIndex = 4;
@@ -206,9 +211,9 @@
             this.listBoxStages.FormattingEnabled = true;
             this.listBoxStages.ItemHeight = 16;
             this.listBoxStages.Location = new System.Drawing.Point(12, 170);
-            this.listBoxStages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxStages.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxStages.Name = "listBoxStages";
-            this.listBoxStages.Size = new System.Drawing.Size(341, 292);
+            this.listBoxStages.Size = new System.Drawing.Size(341, 244);
             this.listBoxStages.TabIndex = 4;
             // 
             // labelStages
@@ -244,7 +249,7 @@
             // textBoxCourriel
             // 
             this.textBoxCourriel.Location = new System.Drawing.Point(159, 116);
-            this.textBoxCourriel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCourriel.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCourriel.Name = "textBoxCourriel";
             this.textBoxCourriel.Size = new System.Drawing.Size(194, 22);
             this.textBoxCourriel.TabIndex = 5;
@@ -252,7 +257,7 @@
             // textBoxTelephone
             // 
             this.textBoxTelephone.Location = new System.Drawing.Point(159, 84);
-            this.textBoxTelephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTelephone.Name = "textBoxTelephone";
             this.textBoxTelephone.Size = new System.Drawing.Size(194, 22);
             this.textBoxTelephone.TabIndex = 4;
@@ -260,7 +265,7 @@
             // textBoxNom
             // 
             this.textBoxNom.Location = new System.Drawing.Point(159, 52);
-            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(194, 22);
             this.textBoxNom.TabIndex = 3;
@@ -268,7 +273,7 @@
             // textBoxNumero
             // 
             this.textBoxNumero.Location = new System.Drawing.Point(159, 20);
-            this.textBoxNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNumero.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(194, 22);
             this.textBoxNumero.TabIndex = 2;
@@ -308,9 +313,9 @@
             this.groupBoxStage.Controls.Add(this.textBoxTitre);
             this.groupBoxStage.Controls.Add(this.textBoxNomSuperviseur);
             this.groupBoxStage.Location = new System.Drawing.Point(784, 6);
-            this.groupBoxStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStage.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxStage.Name = "groupBoxStage";
-            this.groupBoxStage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStage.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxStage.Size = new System.Drawing.Size(376, 540);
             this.groupBoxStage.TabIndex = 2;
             this.groupBoxStage.TabStop = false;
@@ -360,7 +365,7 @@
             // 
             this.textBoxCommentaire.Enabled = false;
             this.textBoxCommentaire.Location = new System.Drawing.Point(12, 170);
-            this.textBoxCommentaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCommentaire.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCommentaire.Name = "textBoxCommentaire";
             this.textBoxCommentaire.Size = new System.Drawing.Size(341, 292);
             this.textBoxCommentaire.TabIndex = 18;
@@ -420,7 +425,7 @@
             // 
             this.textBoxTitre.Enabled = false;
             this.textBoxTitre.Location = new System.Drawing.Point(159, 20);
-            this.textBoxTitre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTitre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTitre.Name = "textBoxTitre";
             this.textBoxTitre.Size = new System.Drawing.Size(194, 22);
             this.textBoxTitre.TabIndex = 11;
@@ -430,7 +435,7 @@
             // 
             this.textBoxNomSuperviseur.Enabled = false;
             this.textBoxNomSuperviseur.Location = new System.Drawing.Point(159, 116);
-            this.textBoxNomSuperviseur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNomSuperviseur.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNomSuperviseur.Name = "textBoxNomSuperviseur";
             this.textBoxNomSuperviseur.Size = new System.Drawing.Size(194, 22);
             this.textBoxNomSuperviseur.TabIndex = 14;
@@ -438,10 +443,10 @@
             // 
             // buttonSauvegard
             // 
-            this.buttonSauvegard.Location = new System.Drawing.Point(16, 494);
-            this.buttonSauvegard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSauvegard.Location = new System.Drawing.Point(212, 493);
+            this.buttonSauvegard.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSauvegard.Name = "buttonSauvegard";
-            this.buttonSauvegard.Size = new System.Drawing.Size(376, 53);
+            this.buttonSauvegard.Size = new System.Drawing.Size(180, 53);
             this.buttonSauvegard.TabIndex = 4;
             this.buttonSauvegard.Text = "&Sauvegarder Information";
             this.buttonSauvegard.UseVisualStyleBackColor = true;
@@ -450,18 +455,49 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // buttonValistagiaire
+            // 
+            this.buttonValistagiaire.Location = new System.Drawing.Point(20, 500);
+            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValistagiaire.Name = "buttonValistagiaire";
+            this.buttonValistagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonValistagiaire.TabIndex = 23;
+            this.buttonValistagiaire.Text = "&Valider";
+            this.buttonValistagiaire.UseVisualStyleBackColor = true;
+            // 
+            // buttonAnnulerStagiaire
+            // 
+            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(205, 500);
+            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
+            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonAnnulerStagiaire.TabIndex = 23;
+            this.buttonAnnulerStagiaire.Text = "&Annuler";
+            this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
+            // 
+            // buttonChargerXML
+            // 
+            this.buttonChargerXML.Location = new System.Drawing.Point(16, 494);
+            this.buttonChargerXML.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonChargerXML.Name = "buttonChargerXML";
+            this.buttonChargerXML.Size = new System.Drawing.Size(180, 53);
+            this.buttonChargerXML.TabIndex = 5;
+            this.buttonChargerXML.Text = "&Charger Fichier XML";
+            this.buttonChargerXML.UseVisualStyleBackColor = true;
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1177, 554);
+            this.Controls.Add(this.buttonChargerXML);
             this.Controls.Add(this.buttonSauvegard);
             this.Controls.Add(this.groupBoxStage);
             this.Controls.Add(this.groupBoxStagiaire);
             this.Controls.Add(this.groupBoxListe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPrincipal";
@@ -517,6 +553,9 @@
         private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button buttonAnnulerStagiaire;
+        private System.Windows.Forms.Button buttonValistagiaire;
+        private System.Windows.Forms.Button buttonChargerXML;
     }
 }
 

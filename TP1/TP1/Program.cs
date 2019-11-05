@@ -16,7 +16,7 @@ namespace TP1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ChargerXML premiereFenetre = new ChargerXML();
+            FormPrincipal premiereFenetre = new FormPrincipal();
             premiereFenetre.Show();
             Application.Run();
         }
