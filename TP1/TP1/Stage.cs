@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TP1
 {
@@ -18,15 +19,8 @@ namespace TP1
             }
             set
             {
-                //debug.Assert
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Le titre ne peut pas etre nul ou vide.");
-                }
-                else
-                {
-                    this.m_titre = value;
-                }
+                Debug.Assert(string.IsNullOrEmpty(value));
+                this.m_titre = value;
             }
         }
 
@@ -65,14 +59,8 @@ namespace TP1
             }
             set
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Le nom du superviseur ne peut pas etre nul ou vide.");
-                }
-                else
-                {
-                    this.m_nomSuperviseur = value;
-                }
+                Debug.Assert(string.IsNullOrEmpty(value));
+                this.m_nomSuperviseur = value;
             }
         }
 

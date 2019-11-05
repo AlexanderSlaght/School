@@ -61,7 +61,7 @@ namespace TP1
             if (this.VerificationDuGroupeBoxStage())
             {
                 Stage nouveauStage = this.ConstruireNouveauStage();
-                string lineToAddToXMLFile = nouveauStage.ToString();
+                AjouterStageAuFichierXML(nouveauStage.ToString());
 
                 foreach (Control ctrl in groupBoxStage.Controls)
                 {
@@ -70,8 +70,16 @@ namespace TP1
                 this.textBoxTitre.Text = "";
                 this.textBoxNomSuperviseur.Text = "";
             }
+
+
             Console.WriteLine($"{this.dateDateDebut}");
 
+        }
+
+        private void AjouterStageAuFichierXML(string stageString)
+        {
+            //Ajouter le string au fichier XML
+            throw new NotImplementedException();
         }
 
         //Il faut aussi considerer la validation des dates
@@ -121,5 +129,9 @@ namespace TP1
             Application.ExitThread();
         }
 
+        private void ButtonSauvegard_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
