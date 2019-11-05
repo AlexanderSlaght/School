@@ -60,12 +60,7 @@ namespace TP1
             //A coder
             if (this.VerificationDuGroupeBoxStage())
             {
-                Stage nouveauStage = new Stage();
-                nouveauStage.titre = this.textBoxTitre.Text;
-                nouveauStage.dateDebut = null;
-                nouveauStage.dateFin = null;
-                nouveauStage.nomSuperviseur = this.textBoxNomSuperviseur.Text;
-
+                Stage nouveauStage = this.ConstruireNouveauStage();
                 string lineToAddToXMLFile = nouveauStage.ToString();
 
                 foreach (Control ctrl in groupBoxStage.Controls)
@@ -75,7 +70,7 @@ namespace TP1
                 this.textBoxTitre.Text = "";
                 this.textBoxNomSuperviseur.Text = "";
             }
-            Console.WriteLine($"{this.dateDateDebut.GetType()}");
+            Console.WriteLine($"{this.dateDateDebut}");
 
         }
 
@@ -89,6 +84,17 @@ namespace TP1
             }
             return true;
         }
+
+        private Stage ConstruireNouveauStage()
+        {
+            Stage nouveauStage = new Stage();
+            nouveauStage.titre = this.textBoxTitre.Text;
+            nouveauStage.dateDebut = null;
+            nouveauStage.dateFin = null;
+            nouveauStage.nomSuperviseur = this.textBoxNomSuperviseur.Text;
+            return nouveauStage;
+        }
+
 
         private void ButtonAnnuler_Click(object sender, EventArgs e)
         {

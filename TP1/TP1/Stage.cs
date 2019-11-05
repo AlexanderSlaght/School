@@ -18,6 +18,7 @@ namespace TP1
             }
             set
             {
+                //debug.Assert
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Le titre ne peut pas etre nul ou vide.");
@@ -76,6 +77,7 @@ namespace TP1
         }
 
         private string m_commentaire;
+
         public string commentaire
         {
             get
