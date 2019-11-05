@@ -36,6 +36,8 @@
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
             this.groupBoxStagiaire = new System.Windows.Forms.GroupBox();
+            this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
+            this.buttonValistagiaire = new System.Windows.Forms.Button();
             this.buttonSupprimerStage = new System.Windows.Forms.Button();
             this.buttonModifierStage = new System.Windows.Forms.Button();
             this.buttonAjouterStage = new System.Windows.Forms.Button();
@@ -63,8 +65,6 @@
             this.textBoxNomSuperviseur = new System.Windows.Forms.TextBox();
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.buttonValistagiaire = new System.Windows.Forms.Button();
-            this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
             this.buttonChargerXML = new System.Windows.Forms.Button();
             this.dataGridStage = new System.Windows.Forms.DataGridView();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
@@ -170,6 +170,26 @@
             this.groupBoxStagiaire.TabIndex = 1;
             this.groupBoxStagiaire.TabStop = false;
             this.groupBoxStagiaire.Text = "Info du Stagiaire";
+            // 
+            // buttonAnnulerStagiaire
+            // 
+            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(205, 500);
+            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
+            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonAnnulerStagiaire.TabIndex = 23;
+            this.buttonAnnulerStagiaire.Text = "&Annuler";
+            this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
+            // 
+            // buttonValistagiaire
+            // 
+            this.buttonValistagiaire.Location = new System.Drawing.Point(20, 500);
+            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValistagiaire.Name = "buttonValistagiaire";
+            this.buttonValistagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonValistagiaire.TabIndex = 23;
+            this.buttonValistagiaire.Text = "&Valider";
+            this.buttonValistagiaire.UseVisualStyleBackColor = true;
             // 
             // buttonSupprimerStage
             // 
@@ -309,6 +329,7 @@
             // 
             // buttonAnnuler
             // 
+            this.buttonAnnuler.Enabled = false;
             this.buttonAnnuler.Location = new System.Drawing.Point(200, 487);
             this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAnnuler.Name = "buttonAnnuler";
@@ -320,6 +341,7 @@
             // 
             // buttonValider
             // 
+            this.buttonValider.Enabled = false;
             this.buttonValider.Location = new System.Drawing.Point(17, 487);
             this.buttonValider.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonValider.Name = "buttonValider";
@@ -436,30 +458,11 @@
             this.buttonSauvegard.TabIndex = 4;
             this.buttonSauvegard.Text = "&Sauvegarder Information";
             this.buttonSauvegard.UseVisualStyleBackColor = true;
+            this.buttonSauvegard.Click += new System.EventHandler(this.ButtonSauvegard_Click);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // buttonValistagiaire
-            // 
-            this.buttonValistagiaire.Location = new System.Drawing.Point(20, 500);
-            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonValistagiaire.Name = "buttonValistagiaire";
-            this.buttonValistagiaire.Size = new System.Drawing.Size(148, 28);
-            this.buttonValistagiaire.TabIndex = 23;
-            this.buttonValistagiaire.Text = "&Valider";
-            this.buttonValistagiaire.UseVisualStyleBackColor = true;
-            // 
-            // buttonAnnulerStagiaire
-            // 
-            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(205, 500);
-            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
-            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(148, 28);
-            this.buttonAnnulerStagiaire.TabIndex = 23;
-            this.buttonAnnulerStagiaire.Text = "&Annuler";
-            this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
             // 
             // buttonChargerXML
             // 
