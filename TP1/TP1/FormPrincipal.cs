@@ -15,6 +15,10 @@ namespace TP1
         public FormPrincipal()
         {
             InitializeComponent();
+            stagiaireBindingSource.Add(new Stagiaire());
+            stagiaireBindingSource.Add(new Stagiaire());
+            stagiaireBindingSource.Add(new Stagiaire());
+            stagiaireBindingSource.Add(new Stagiaire());
         }
 
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
@@ -115,5 +119,9 @@ namespace TP1
             Application.ExitThread();
         }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

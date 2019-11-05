@@ -10,7 +10,6 @@ namespace TP1
     {
         public int numeroEmployee {get; set; }
         public string nom { get; set; }
-        public string prenom { get; set; }
         public string numeroTelephone { get; set; }
         public string courriel { get; set; }
         public List<Stage> stages { get; set; }
@@ -18,8 +17,6 @@ namespace TP1
         public Stagiaire()
         {
             this.numeroEmployee = 0;
-            this.nom = "";
-            this.prenom = "";
             this.numeroTelephone = "";
             this.courriel = "";
             this.nom = "";

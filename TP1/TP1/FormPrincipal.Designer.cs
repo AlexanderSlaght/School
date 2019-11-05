@@ -35,12 +35,10 @@
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
-            this.listBoxstagiaire = new System.Windows.Forms.ListBox();
             this.groupBoxStagiaire = new System.Windows.Forms.GroupBox();
             this.buttonSupprimerStage = new System.Windows.Forms.Button();
             this.buttonModifierStage = new System.Windows.Forms.Button();
             this.buttonAjouterStage = new System.Windows.Forms.Button();
-            this.listBoxStages = new System.Windows.Forms.ListBox();
             this.labelStages = new System.Windows.Forms.Label();
             this.labelCourriel = new System.Windows.Forms.Label();
             this.labelTelephone = new System.Windows.Forms.Label();
@@ -68,20 +66,28 @@
             this.buttonValistagiaire = new System.Windows.Forms.Button();
             this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
             this.buttonChargerXML = new System.Windows.Forms.Button();
+            this.dataGridStage = new System.Windows.Forms.DataGridView();
+            this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxListe.SuspendLayout();
             this.groupBoxStagiaire.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxListe
             // 
+            this.groupBoxListe.Controls.Add(this.dataGridStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonSupprimerStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonModifierStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonAjouterStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonRechercher);
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
-            this.groupBoxListe.Controls.Add(this.listBoxstagiaire);
             this.groupBoxListe.Location = new System.Drawing.Point(16, 6);
             this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxListe.Name = "groupBoxListe";
@@ -139,24 +145,14 @@
             this.textBoxRecherche.Size = new System.Drawing.Size(251, 22);
             this.textBoxRecherche.TabIndex = 0;
             // 
-            // listBoxstagiaire
-            // 
-            this.listBoxstagiaire.FormattingEnabled = true;
-            this.listBoxstagiaire.ItemHeight = 16;
-            this.listBoxstagiaire.Location = new System.Drawing.Point(8, 23);
-            this.listBoxstagiaire.Margin = new System.Windows.Forms.Padding(4);
-            this.listBoxstagiaire.Name = "listBoxstagiaire";
-            this.listBoxstagiaire.Size = new System.Drawing.Size(359, 340);
-            this.listBoxstagiaire.TabIndex = 0;
-            // 
             // groupBoxStagiaire
             // 
+            this.groupBoxStagiaire.Controls.Add(this.dataGridStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonAnnulerStagiaire);
             this.groupBoxStagiaire.Controls.Add(this.buttonValistagiaire);
             this.groupBoxStagiaire.Controls.Add(this.buttonSupprimerStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonModifierStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonAjouterStage);
-            this.groupBoxStagiaire.Controls.Add(this.listBoxStages);
             this.groupBoxStagiaire.Controls.Add(this.labelStages);
             this.groupBoxStagiaire.Controls.Add(this.labelCourriel);
             this.groupBoxStagiaire.Controls.Add(this.labelTelephone);
@@ -205,16 +201,6 @@
             this.buttonAjouterStage.Text = "&Ajouter Stage";
             this.buttonAjouterStage.UseVisualStyleBackColor = true;
             this.buttonAjouterStage.Click += new System.EventHandler(this.ButtonAjouterStage_Click);
-            // 
-            // listBoxStages
-            // 
-            this.listBoxStages.FormattingEnabled = true;
-            this.listBoxStages.ItemHeight = 16;
-            this.listBoxStages.Location = new System.Drawing.Point(12, 170);
-            this.listBoxStages.Margin = new System.Windows.Forms.Padding(4);
-            this.listBoxStages.Name = "listBoxStages";
-            this.listBoxStages.Size = new System.Drawing.Size(341, 244);
-            this.listBoxStages.TabIndex = 4;
             // 
             // labelStages
             // 
@@ -485,6 +471,66 @@
             this.buttonChargerXML.Text = "&Charger Fichier XML";
             this.buttonChargerXML.UseVisualStyleBackColor = true;
             // 
+            // dataGridStage
+            // 
+            this.dataGridStage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStage.Location = new System.Drawing.Point(11, 170);
+            this.dataGridStage.Name = "dataGridStage";
+            this.dataGridStage.RowHeadersWidth = 51;
+            this.dataGridStage.RowTemplate.Height = 24;
+            this.dataGridStage.Size = new System.Drawing.Size(342, 245);
+            this.dataGridStage.TabIndex = 24;
+            // 
+            // dataGridStagiaire
+            // 
+            this.dataGridStagiaire.AllowUserToAddRows = false;
+            this.dataGridStagiaire.AllowUserToDeleteRows = false;
+            this.dataGridStagiaire.AllowUserToResizeColumns = false;
+            this.dataGridStagiaire.AllowUserToResizeRows = false;
+            this.dataGridStagiaire.AutoGenerateColumns = false;
+            this.dataGridStagiaire.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStagiaire.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomDataGridViewTextBoxColumn,
+            this.numeroEmployeeDataGridViewTextBoxColumn});
+            this.dataGridStagiaire.DataSource = this.stagiaireBindingSource;
+            this.dataGridStagiaire.GridColor = System.Drawing.SystemColors.Control;
+            this.dataGridStagiaire.Location = new System.Drawing.Point(8, 20);
+            this.dataGridStagiaire.MultiSelect = false;
+            this.dataGridStagiaire.Name = "dataGridStagiaire";
+            this.dataGridStagiaire.ReadOnly = true;
+            this.dataGridStagiaire.RowHeadersVisible = false;
+            this.dataGridStagiaire.RowHeadersWidth = 51;
+            this.dataGridStagiaire.RowTemplate.Height = 24;
+            this.dataGridStagiaire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridStagiaire.Size = new System.Drawing.Size(360, 342);
+            this.dataGridStagiaire.TabIndex = 25;
+            this.dataGridStagiaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // stagiaireBindingSource
+            // 
+            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // numeroEmployeeDataGridViewTextBoxColumn
+            // 
+            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
+            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
+            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
+            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -511,6 +557,9 @@
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,7 +567,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxListe;
-        private System.Windows.Forms.ListBox listBoxstagiaire;
         private System.Windows.Forms.GroupBox groupBoxStagiaire;
         private System.Windows.Forms.GroupBox groupBoxStage;
         private System.Windows.Forms.Button buttonModifierStagiaire;
@@ -539,7 +587,6 @@
         private System.Windows.Forms.Button buttonSupprimerStage;
         private System.Windows.Forms.Button buttonModifierStage;
         private System.Windows.Forms.Button buttonAjouterStage;
-        private System.Windows.Forms.ListBox listBoxStages;
         private System.Windows.Forms.RichTextBox textBoxCommentaire;
         private System.Windows.Forms.Label labelCommentaire;
         private System.Windows.Forms.Label labelTitre;
@@ -556,6 +603,12 @@
         private System.Windows.Forms.Button buttonAnnulerStagiaire;
         private System.Windows.Forms.Button buttonValistagiaire;
         private System.Windows.Forms.Button buttonChargerXML;
+        private System.Windows.Forms.DataGridView dataGridStagiaire;
+        private System.Windows.Forms.DataGridView dataGridStage;
+        private System.Windows.Forms.BindingSource stagiaireBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
     }
 }
 
