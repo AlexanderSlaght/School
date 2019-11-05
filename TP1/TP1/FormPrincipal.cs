@@ -58,9 +58,55 @@ namespace TP1
         private void ButtonValider_Click(object sender, EventArgs e)
         {
             //A coder
-            foreach (Control ctrl in groupBoxStage.Controls)
+            if (this.VerificationDuGroupeBoxStage())
             {
-                ctrl.Enabled = true;
+                Stage nouveauStage = new Stage();
+                nouveauStage.titre = this.textBoxTitre.Text;
+                nouveauStage.dateDebut = null;
+                nouveauStage.dateFin = null;
+                nouveauStage.nomSuperviseur = this.textBoxNomSuperviseur.Text;
+
+                string lineToAddToXMLFile = nouveauStage.ToString();
+
+                foreach (Control ctrl in groupBoxStage.Controls)
+                {
+                    ctrl.Enabled = false;
+                }
+                this.textBoxTitre.Text = "";
+                this.textBoxNomSuperviseur.Text = "";
+            }
+            Console.WriteLine($"{this.dateDateDebut.GetType()}");
+
+        }
+
+        //Il faut aussi considerer la validation des dates
+        private bool VerificationDuGroupeBoxStage()
+        {
+            if(string.IsNullOrEmpty(this.textBoxTitre.Text) ||
+               string.IsNullOrEmpty(this.textBoxNomSuperviseur.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void ButtonAnnuler_Click(object sender, EventArgs e)
+        {
+            DialogResult validation = MessageBox.Show(
+                            "Voulez-vous vraiment annuler l'ajout du nouveau stage? " +
+                            "Les renseignements seront perdus.", 
+                            "Attention!",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning);
+
+            if (validation is DialogResult.Yes)
+            {
+                this.textBoxTitre.Text = "";
+                this.textBoxNomSuperviseur.Text = "";
+                foreach(Control ctrl in groupBoxStage.Controls)
+                {
+                    ctrl.Enabled = false;
+                }
             }
         }
 
@@ -68,5 +114,6 @@ namespace TP1
         {
             Application.ExitThread();
         }
+
     }
 }

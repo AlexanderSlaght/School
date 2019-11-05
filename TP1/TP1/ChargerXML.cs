@@ -19,6 +19,7 @@ namespace TP1
 
         private void ChargerXML_FormClosing(object sender, FormClosingEventArgs e)
         {
+
         }
 
         private void ButtonNouvelleListe_Click(object sender, EventArgs e)
