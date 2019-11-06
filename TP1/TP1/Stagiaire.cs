@@ -33,22 +33,8 @@ namespace TP1
             }
             set
             {
-                Debug.Assert(string.IsNullOrEmpty(value));
+                Debug.Assert(!string.IsNullOrEmpty(value));
                 this.m_nom = value;
-            }
-        }
-
-        private string m_prenom;
-        public string prenom
-        {
-            get
-            {
-                return this.m_prenom;
-            }
-            set
-            {
-                Debug.Assert(string.IsNullOrEmpty(value));
-                this.m_prenom = value;
             }
         }
 
@@ -61,8 +47,8 @@ namespace TP1
             }
             set
             {
-                Debug.Assert(string.IsNullOrEmpty(value));
-                Debug.Assert(VerificationRegexTelephone(value));
+                Debug.Assert(!string.IsNullOrEmpty(value));
+                Debug.Assert(!VerificationRegexTelephone(value));
                 this.m_numeroTelephone = value;
             }
         }
@@ -76,7 +62,7 @@ namespace TP1
             }
             set
             {
-                Debug.Assert(string.IsNullOrEmpty(value));
+                Debug.Assert(!string.IsNullOrEmpty(value));
                 this.m_courriel = value;
             }
         }
@@ -98,7 +84,7 @@ namespace TP1
         {
             this.numeroEmployee = 0;
             this.nom = "";
-            this.numeroTelephone = "";
+            this.numeroTelephone = "000-000-0000";
             this.courriel = "";
             this.stage = new List<Stage>();
         }

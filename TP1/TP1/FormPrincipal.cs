@@ -15,10 +15,6 @@ namespace TP1
         public FormPrincipal()
         {
             InitializeComponent();
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
         }
 
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
@@ -27,6 +23,40 @@ namespace TP1
             {
                 ctrl.Enabled = true;
             }
+        }
+
+        private void TextBoxNumero_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNumero.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBoxNumero, "Le numero d'employe ne peut pas etre vide.");
+            }
+            else if(!Int32.TryParse(this.textBoxNumero.Text, out int numEmp))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre un nombre.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.Clear();
+            }
+        }
+
+        private void TextBoxNom_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void TextBoxTelephone_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void TextBoxCourriel_Validating(object sender, CancelEventArgs e)
+        {
+
         }
 
         private void TextBoxTitre_Validating(object sender, CancelEventArgs e)
@@ -133,13 +163,10 @@ namespace TP1
             Application.ExitThread();
         }
 
-<<<<<<< HEAD
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-=======
-        private void ButtonSauvegard_Click(object sender, EventArgs e)
->>>>>>> d7e778aaa26b864633816163e56d3197d757dff9
         {
 
         }
+
     }
 }
