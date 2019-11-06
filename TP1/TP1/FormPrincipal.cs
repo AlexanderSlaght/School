@@ -15,10 +15,29 @@ namespace TP1
         public FormPrincipal()
         {
             InitializeComponent();
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
-            stagiaireBindingSource.Add(new Stagiaire());
+            UpdateBindingSourceWithList();
+        }
+
+        public void UpdateBindingSourceWithList()
+        {
+            ListeDeStagiaire.stagiaires = new List<Stagiaire>();
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            foreach (Stagiaire n in ListeDeStagiaire.stagiaires)
+            {
+                stagiaireBindingSource.Add(n);
+            }
         }
 
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
@@ -133,11 +152,12 @@ namespace TP1
             Application.ExitThread();
         }
 
-<<<<<<< HEAD
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-=======
-        private void ButtonSauvegard_Click(object sender, EventArgs e)
->>>>>>> d7e778aaa26b864633816163e56d3197d757dff9
+        {
+
+        }
+
+        private void buttonModifierStagiaire_Click(object sender, EventArgs e)
         {
 
         }
