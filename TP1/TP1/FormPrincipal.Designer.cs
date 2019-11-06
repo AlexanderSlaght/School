@@ -31,9 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
+<<<<<<< HEAD
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
+=======
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
             this.buttonModifierStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
@@ -71,13 +74,25 @@
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.groupBoxListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
+=======
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBoxListe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             this.groupBoxStagiaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+<<<<<<< HEAD
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             this.SuspendLayout();
             // 
             // groupBoxListe
@@ -122,6 +137,7 @@
             this.dataGridStagiaire.TabIndex = 25;
             this.dataGridStagiaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+<<<<<<< HEAD
             // nomDataGridViewTextBoxColumn
             // 
             this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -147,6 +163,8 @@
             // 
             this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
             // 
+=======
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             // buttonSupprimerStagiaire
             // 
             this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(101, 439);
@@ -166,6 +184,7 @@
             this.buttonModifierStagiaire.TabIndex = 2;
             this.buttonModifierStagiaire.Text = "&Modifier Stagiaire";
             this.buttonModifierStagiaire.UseVisualStyleBackColor = true;
+            this.buttonModifierStagiaire.Click += new System.EventHandler(this.buttonModifierStagiaire_Click);
             // 
             // buttonAjouterStagiaire
             // 
@@ -537,6 +556,34 @@
             this.buttonChargerXML.Text = "&Charger Fichier XML";
             this.buttonChargerXML.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
+=======
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // numeroEmployeeDataGridViewTextBoxColumn
+            // 
+            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
+            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
+            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
+            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // stagiaireBindingSource
+            // 
+            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
+            // 
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -559,13 +606,20 @@
             this.groupBoxListe.ResumeLayout(false);
             this.groupBoxListe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).EndInit();
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
+=======
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             this.groupBoxStagiaire.ResumeLayout(false);
             this.groupBoxStagiaire.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).EndInit();
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+<<<<<<< HEAD
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
+>>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
             this.ResumeLayout(false);
 
         }

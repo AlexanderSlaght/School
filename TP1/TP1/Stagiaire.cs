@@ -89,6 +89,15 @@ namespace TP1
             this.stage = new List<Stage>();
         }
 
+        public Stagiaire(int p_numEmploy, string p_nom, string p_numTele, string p_courriel)
+        {
+            this.numeroEmployee = p_numEmploy;
+            this.nom = p_nom;
+            this.numeroTelephone = p_numTele;
+            this.courriel = p_courriel;
+            this.stage = new List<Stage>();
+        }
+
         public override string ToString()
         {
             string stagiaireString = $"<stagiaire " +
