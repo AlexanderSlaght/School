@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace TP1
 {
@@ -30,6 +31,8 @@ namespace TP1
         public void UpdateBindingSourceWithList()
         {
             ListeDeStagiaire.stagiaires = new List<Stagiaire>();
+
+            /* Objets test
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com", new List<Stage> { new Stage("hello", DateTime.Today, DateTime.Today, "evil", "He fucked a goat on his first shift."), new Stage("bye", DateTime.Today, DateTime.Today, "boring", "Despite killing himself after the third break his work was well done!") }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com", new List<Stage> { }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com", new List<Stage> { }));
@@ -43,6 +46,7 @@ namespace TP1
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            */
             stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
         }
 
@@ -135,16 +139,17 @@ namespace TP1
                     if (node.Name == "stagiaire")
                     {
                         //Construction du stagiaire
-                        Stagiaire nouveauStagiaire = new Stagiaire();
-                        nouveauStagiaire.numeroEmployee = 5;
-                        //Convert.ToInt32(node.Attributes[0].InnerText);
-                        nouveauStagiaire.nom = node.Attributes[1].InnerText;
-                        nouveauStagiaire.numeroTelephone = node.Attributes[2].InnerText;
-                        nouveauStagiaire.courriel = node.Attributes[3].InnerText;
-                        List<Stage> nouvelleListeDeStage = new List<Stage>();
-                        foreach (XmlNode child in document.ChildNodes)
+                        Stagiaire nouveauStagiaire = new Stagiaire(
+                            Convert.ToInt32(node.Attributes[0].InnerText),
+                            node.Attributes[1].InnerText,
+                            node.Attributes[2].InnerText,
+                            node.Attributes[3].InnerText, 
+                            p_listeStage : new List<Stage>());
+
+                        foreach (XmlElement element in document.ChildNodes)
                         {
-                            if (node.Name == "stage")
+                            Console.WriteLine(element.Name);
+                            if (element.Name == "stage")
                             {
                                 //Construction de la liste de stage du stagiaire
                                 Stage nouveauStage = new Stage();
@@ -153,19 +158,14 @@ namespace TP1
                                 nouveauStage.dateFin = DateTime.ParseExact(node.Attributes[2].InnerText, "dd-MM-yyyy", null);
                                 nouveauStage.nomSuperviseur = node.Attributes[3].InnerText;
                                 nouveauStage.commentaire = node.Attributes[4].InnerText;
-                                nouvelleListeDeStage.Add(nouveauStage);
+                                nouveauStagiaire.stage.Add(nouveauStage);
                             }
                         }
-                        nouveauStagiaire.stage = nouvelleListeDeStage;
                         ListeDeStagiaire.stagiaires.Add(nouveauStagiaire);
                     }
 
                 }
-                //juste pour verifier le nombre de stagiaire qui a ete ajouter a la liste. (to be deleted)
-                foreach (Stagiaire st in ListeDeStagiaire.stagiaires)
-                {
-                    Console.WriteLine("allo");
-                }
+
                 DesactiverStagiaireModifier();
                 stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
                 dataGridStagiaire.Update();
@@ -343,28 +343,54 @@ namespace TP1
 
         private void TextBoxNom_Validating(object sender, CancelEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(textBoxNom.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBoxNom, "Le nom ne peut pas etre vide.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.Clear();
+            }
         }
 
         private void TextBoxTelephone_Validating(object sender, CancelEventArgs e)
         {
-
+            Regex telephoneRegex = new Regex(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
+            if (!telephoneRegex.IsMatch(textBoxTelephone.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBoxTelephone, "Le numero de telephone doit avoir le format 123-456-7890");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.Clear();
+            }
         }
 
         private void TextBoxCourriel_Validating(object sender, CancelEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(textBoxCourriel.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBoxCourriel, "Le courriel ne doit pas etre vide.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.Clear();
+            }
         }
+
 
         //Boutons De Info Du Stage----------------------------------------------------------------------------
 
         private void ButtonValider_Click(object sender, EventArgs e)
         {
-            //A coder
             if (this.VerificationDuGroupeBoxStage())
             {
-                //Stage nouveauStage = this.ConstruireNouveauStage();
-                //AjouterStageAuFichierXML(nouveauStage.ToString());
                 if (StageSelecteur.stageSel == null)
                 {
                     stageBindingSource.Add(new Stage(textBoxTitre.Text, dateDateDebut.Value.Date, dateDateFin.Value.Date, textBoxNomSuperviseur.Text, textBoxCommentaire.Text));
@@ -405,8 +431,10 @@ namespace TP1
             if (validation is DialogResult.Yes)
             {
                 DesactiverStageModifier();
+                errorProvider.Clear();
             }
         }
+
         private void TextBoxTitre_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(this.textBoxTitre.Text))

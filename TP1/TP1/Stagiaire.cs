@@ -48,7 +48,7 @@ namespace TP1
             set
             {
                 Debug.Assert(!string.IsNullOrEmpty(value));
-                Debug.Assert(!VerificationRegexTelephone(value));
+                Debug.Assert(VerificationRegexTelephone(value));
                 this.m_numeroTelephone = value;
             }
         }
@@ -110,7 +110,7 @@ namespace TP1
 
         private bool VerificationRegexTelephone(string p_value)
         {
-            Regex telephoneRegex = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
+            Regex telephoneRegex = new Regex(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
             if (telephoneRegex.IsMatch(p_value))
             {
                 return true;
