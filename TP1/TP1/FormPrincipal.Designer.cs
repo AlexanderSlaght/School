@@ -291,6 +291,7 @@
             this.buttonValistagiaire.Text = "&Valider";
             this.buttonValistagiaire.UseVisualStyleBackColor = true;
             this.buttonValistagiaire.Click += new System.EventHandler(this.ButtonValistagiaire_Click);
+            this.buttonValistagiaire.Validating += new System.ComponentModel.CancelEventHandler(this.buttonValistagiaire_Validating);
             // 
             // buttonSupprimerStage
             // 
