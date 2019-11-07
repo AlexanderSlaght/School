@@ -146,18 +146,19 @@ namespace TP1
                             node.Attributes[3].InnerText, 
                             p_listeStage : new List<Stage>());
 
-                        foreach (XmlElement element in document.ChildNodes)
+                        foreach (XmlNode cNode in node.ChildNodes)
                         {
-                            Console.WriteLine(element.Name);
-                            if (element.Name == "stage")
+
+                            if (cNode.LocalName == "stage")
                             {
                                 //Construction de la liste de stage du stagiaire
-                                Stage nouveauStage = new Stage();
-                                nouveauStage.titre = node.Attributes[0].InnerText;
-                                nouveauStage.dateDebut = DateTime.ParseExact(node.Attributes[1].InnerText, "dd-MM-yyyy", null);
-                                nouveauStage.dateFin = DateTime.ParseExact(node.Attributes[2].InnerText, "dd-MM-yyyy", null);
-                                nouveauStage.nomSuperviseur = node.Attributes[3].InnerText;
-                                nouveauStage.commentaire = node.Attributes[4].InnerText;
+                                Stage nouveauStage = new Stage(
+                                    cNode.Attributes[0].InnerText,
+                                    DateTime.ParseExact(cNode.Attributes[1].InnerText, "dd-MM-yyyy", null),
+                                    DateTime.ParseExact(cNode.Attributes[2].InnerText, "dd-MM-yyyy", null),
+                                    cNode.Attributes[3].InnerText,
+                                    cNode.Attributes[4].InnerText
+                                    );
                                 nouveauStagiaire.stage.Add(nouveauStage);
                             }
                         }
@@ -464,7 +465,5 @@ namespace TP1
                 this.errorProvider.Clear();
             }
         }
-
-        
     }
 }
