@@ -15,8 +15,6 @@ namespace TP1
         public FormPrincipal()
         {
             InitializeComponent();
-<<<<<<< HEAD
-=======
             UpdateBindingSourceWithList();
         }
 
@@ -40,7 +38,6 @@ namespace TP1
             {
                 stagiaireBindingSource.Add(n);
             }
->>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
         }
 
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
@@ -190,14 +187,11 @@ namespace TP1
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-<<<<<<< HEAD
-=======
         {
 
         }
 
         private void buttonModifierStagiaire_Click(object sender, EventArgs e)
->>>>>>> dbd416b8132d6e0536bc7ccb844fb442a2e9b9a2
         {
 
         }
