@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml;
 
 namespace TP1
 {
@@ -21,6 +23,7 @@ namespace TP1
         public void UpdateBindingSourceWithList()
         {
             ListeDeStagiaire.stagiaires = new List<Stagiaire>();
+            /*
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com"));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com"));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com"));
@@ -34,6 +37,7 @@ namespace TP1
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
+            */
             foreach (Stagiaire n in ListeDeStagiaire.stagiaires)
             {
                 stagiaireBindingSource.Add(n);
@@ -196,5 +200,52 @@ namespace TP1
 
         }
 
+        private void ButtonChargerXML_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(openFileDialog.FileName);
+
+                foreach(XmlNode node in document.DocumentElement)
+                {
+                    if(node.Name == "stagiaire")
+                    {
+                        //Construction du stagiaire
+                        Stagiaire nouveauStagiaire = new Stagiaire();
+                        nouveauStagiaire.numeroEmployee = Convert.ToInt32(node.Attributes[0].InnerText);
+                        nouveauStagiaire.nom = node.Attributes[1].InnerText;
+                        nouveauStagiaire.numeroTelephone = node.Attributes[2].InnerText;
+                        nouveauStagiaire.courriel = node.Attributes[3].InnerText;
+                        List<Stage> nouvelleListeDeStage = new List<Stage>();
+                        nouveauStagiaire.stage = nouvelleListeDeStage;
+                        foreach(XmlNode child in document.ChildNodes)
+                        {
+                            if(node.Name == "stage")
+                            {
+                                //Construction de la liste de stage du stagiaire
+                                Stage nouveauStage = new Stage();
+                                nouveauStage.titre = node.Attributes[0].InnerText;
+                                //Il faut convertir les string du document XML en dates valides (format datetimepicker)
+                                //nouveauStage.dateDebut = node.Attributes[1].InnerText;
+                                //nouveauStage.dateFin = node.Attributes[2].InnerText;
+                                nouveauStage.nomSuperviseur = node.Attributes[3].InnerText;
+                                nouveauStage.commentaire = node.Attributes[4].InnerText;
+                                nouvelleListeDeStage.Add(nouveauStage);
+                            }
+                        }
+                        ListeDeStagiaire.stagiaires.Add(nouveauStagiaire);
+                    }
+
+                }
+                //juste pour verifier le nombre de stagiaire qui a ete ajouter a la liste. (to be deleted)
+                foreach(Stagiaire st in ListeDeStagiaire.stagiaires)
+                {
+                    Console.WriteLine("allo");
+                }
+                
+            }
+
+        }
     }
 }

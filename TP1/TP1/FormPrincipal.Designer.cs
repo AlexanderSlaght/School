@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
             this.buttonModifierStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
@@ -71,9 +68,12 @@
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.groupBoxStagiaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
             this.groupBoxStage.SuspendLayout();
@@ -122,31 +122,6 @@
             this.dataGridStagiaire.Size = new System.Drawing.Size(360, 342);
             this.dataGridStagiaire.TabIndex = 25;
             this.dataGridStagiaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // numeroEmployeeDataGridViewTextBoxColumn
-            // 
-            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
-            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
-            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
-            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // stagiaireBindingSource
-            // 
-            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
             // 
             // buttonSupprimerStagiaire
             // 
@@ -537,6 +512,13 @@
             this.buttonChargerXML.TabIndex = 5;
             this.buttonChargerXML.Text = "&Charger Fichier XML";
             this.buttonChargerXML.UseVisualStyleBackColor = true;
+            this.buttonChargerXML.Click += new System.EventHandler(this.ButtonChargerXML_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "xml";
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "xml file |*.xml| text file |*.txt";
             // 
             // nomDataGridViewTextBoxColumn
             // 
@@ -641,6 +623,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
