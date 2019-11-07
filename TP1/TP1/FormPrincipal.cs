@@ -386,7 +386,7 @@ namespace TP1
 
         private void buttonValistagiaire_Validating(object sender, CancelEventArgs e)
         {
-
+            
         }
 
         //Boutons De Info Du Stage----------------------------------------------------------------------------
