@@ -384,6 +384,10 @@ namespace TP1
             }
         }
 
+        private void buttonValistagiaire_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
 
         //Boutons De Info Du Stage----------------------------------------------------------------------------
 
@@ -464,7 +468,5 @@ namespace TP1
                 this.errorProvider.Clear();
             }
         }
-
-        
     }
 }

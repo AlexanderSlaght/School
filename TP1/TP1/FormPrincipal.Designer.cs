@@ -32,12 +32,17 @@
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
             this.buttonListeComplete = new System.Windows.Forms.Button();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
             this.groupBoxStagiaire = new System.Windows.Forms.GroupBox();
             this.dataGridStage = new System.Windows.Forms.DataGridView();
+            this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
             this.buttonValistagiaire = new System.Windows.Forms.Button();
             this.buttonSupprimerStage = new System.Windows.Forms.Button();
@@ -68,19 +73,14 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.groupBoxStagiaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).BeginInit();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxListe
@@ -91,9 +91,11 @@
             this.groupBoxListe.Controls.Add(this.buttonAjouterStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonRechercher);
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
-            this.groupBoxListe.Location = new System.Drawing.Point(12, 5);
+            this.groupBoxListe.Location = new System.Drawing.Point(16, 6);
+            this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxListe.Name = "groupBoxListe";
-            this.groupBoxListe.Size = new System.Drawing.Size(282, 390);
+            this.groupBoxListe.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxListe.Size = new System.Drawing.Size(376, 480);
             this.groupBoxListe.TabIndex = 0;
             this.groupBoxListe.TabStop = false;
             this.groupBoxListe.Text = "Liste De Stagiaire";
@@ -101,9 +103,10 @@
             // buttonListeComplete
             // 
             this.buttonListeComplete.Enabled = false;
-            this.buttonListeComplete.Location = new System.Drawing.Point(76, 331);
+            this.buttonListeComplete.Location = new System.Drawing.Point(101, 407);
+            this.buttonListeComplete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonListeComplete.Name = "buttonListeComplete";
-            this.buttonListeComplete.Size = new System.Drawing.Size(129, 24);
+            this.buttonListeComplete.Size = new System.Drawing.Size(172, 30);
             this.buttonListeComplete.TabIndex = 26;
             this.buttonListeComplete.Text = "Afficher Liste Complète";
             this.buttonListeComplete.UseVisualStyleBackColor = true;
@@ -123,8 +126,8 @@
             this.numeroEmployeeDataGridViewTextBoxColumn});
             this.dataGridStagiaire.DataSource = this.stagiaireBindingSource;
             this.dataGridStagiaire.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridStagiaire.Location = new System.Drawing.Point(6, 16);
-            this.dataGridStagiaire.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridStagiaire.Location = new System.Drawing.Point(8, 20);
+            this.dataGridStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridStagiaire.MultiSelect = false;
             this.dataGridStagiaire.Name = "dataGridStagiaire";
             this.dataGridStagiaire.ReadOnly = true;
@@ -132,398 +135,9 @@
             this.dataGridStagiaire.RowHeadersWidth = 51;
             this.dataGridStagiaire.RowTemplate.Height = 24;
             this.dataGridStagiaire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStagiaire.Size = new System.Drawing.Size(270, 281);
+            this.dataGridStagiaire.Size = new System.Drawing.Size(360, 346);
             this.dataGridStagiaire.TabIndex = 25;
             this.dataGridStagiaire.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStagiaire_CellClick);
-            // 
-            // buttonSupprimerStagiaire
-            // 
-            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(147, 361);
-            this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
-            this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(129, 23);
-            this.buttonSupprimerStagiaire.TabIndex = 3;
-            this.buttonSupprimerStagiaire.Text = "&Supprimer Stagiaire";
-            this.buttonSupprimerStagiaire.UseVisualStyleBackColor = true;
-            this.buttonSupprimerStagiaire.Click += new System.EventHandler(this.ButtonSupprimerStagiaire_Click);
-            // 
-            // buttonAjouterStagiaire
-            // 
-            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(6, 361);
-            this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
-            this.buttonAjouterStagiaire.Size = new System.Drawing.Size(135, 23);
-            this.buttonAjouterStagiaire.TabIndex = 1;
-            this.buttonAjouterStagiaire.Text = "&Ajouter Stagiaire";
-            this.buttonAjouterStagiaire.UseVisualStyleBackColor = true;
-            this.buttonAjouterStagiaire.Click += new System.EventHandler(this.ButtonAjouterStagiaire_Click);
-            // 
-            // buttonRechercher
-            // 
-            this.buttonRechercher.Location = new System.Drawing.Point(201, 302);
-            this.buttonRechercher.Name = "buttonRechercher";
-            this.buttonRechercher.Size = new System.Drawing.Size(75, 23);
-            this.buttonRechercher.TabIndex = 0;
-            this.buttonRechercher.Text = "Rechercher";
-            this.buttonRechercher.UseVisualStyleBackColor = true;
-            this.buttonRechercher.Click += new System.EventHandler(this.ButtonRechercher_Click);
-            // 
-            // textBoxRecherche
-            // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(6, 305);
-            this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(189, 20);
-            this.textBoxRecherche.TabIndex = 0;
-            // 
-            // groupBoxStagiaire
-            // 
-            this.groupBoxStagiaire.Controls.Add(this.dataGridStage);
-            this.groupBoxStagiaire.Controls.Add(this.buttonAnnulerStagiaire);
-            this.groupBoxStagiaire.Controls.Add(this.buttonValistagiaire);
-            this.groupBoxStagiaire.Controls.Add(this.buttonSupprimerStage);
-            this.groupBoxStagiaire.Controls.Add(this.buttonAjouterStage);
-            this.groupBoxStagiaire.Controls.Add(this.labelStages);
-            this.groupBoxStagiaire.Controls.Add(this.labelCourriel);
-            this.groupBoxStagiaire.Controls.Add(this.labelTelephone);
-            this.groupBoxStagiaire.Controls.Add(this.textBoxCourriel);
-            this.groupBoxStagiaire.Controls.Add(this.textBoxTelephone);
-            this.groupBoxStagiaire.Controls.Add(this.textBoxNom);
-            this.groupBoxStagiaire.Controls.Add(this.textBoxNumero);
-            this.groupBoxStagiaire.Controls.Add(this.labelNom);
-            this.groupBoxStagiaire.Controls.Add(this.labelNumero);
-            this.groupBoxStagiaire.Location = new System.Drawing.Point(300, 5);
-            this.groupBoxStagiaire.Name = "groupBoxStagiaire";
-            this.groupBoxStagiaire.Size = new System.Drawing.Size(282, 439);
-            this.groupBoxStagiaire.TabIndex = 1;
-            this.groupBoxStagiaire.TabStop = false;
-            this.groupBoxStagiaire.Text = "Info du Stagiaire";
-            // 
-            // dataGridStage
-            // 
-            this.dataGridStage.AllowUserToAddRows = false;
-            this.dataGridStage.AllowUserToDeleteRows = false;
-            this.dataGridStage.AllowUserToResizeColumns = false;
-            this.dataGridStage.AllowUserToResizeRows = false;
-            this.dataGridStage.AutoGenerateColumns = false;
-            this.dataGridStage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridStage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titreDataGridViewTextBoxColumn});
-            this.dataGridStage.DataSource = this.stageBindingSource;
-            this.dataGridStage.Enabled = false;
-            this.dataGridStage.Location = new System.Drawing.Point(8, 138);
-            this.dataGridStage.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridStage.MultiSelect = false;
-            this.dataGridStage.Name = "dataGridStage";
-            this.dataGridStage.ReadOnly = true;
-            this.dataGridStage.RowHeadersVisible = false;
-            this.dataGridStage.RowHeadersWidth = 51;
-            this.dataGridStage.RowTemplate.Height = 24;
-            this.dataGridStage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStage.Size = new System.Drawing.Size(256, 217);
-            this.dataGridStage.TabIndex = 24;
-            this.dataGridStage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStage_CellClick);
-            // 
-            // buttonAnnulerStagiaire
-            // 
-            this.buttonAnnulerStagiaire.Enabled = false;
-            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(143, 406);
-            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
-            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(121, 23);
-            this.buttonAnnulerStagiaire.TabIndex = 23;
-            this.buttonAnnulerStagiaire.Text = "&Annuler";
-            this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
-            this.buttonAnnulerStagiaire.Click += new System.EventHandler(this.ButtonAnnulerStagiaire_Click);
-            // 
-            // buttonValistagiaire
-            // 
-            this.buttonValistagiaire.Enabled = false;
-            this.buttonValistagiaire.Location = new System.Drawing.Point(9, 406);
-            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonValistagiaire.Name = "buttonValistagiaire";
-            this.buttonValistagiaire.Size = new System.Drawing.Size(123, 23);
-            this.buttonValistagiaire.TabIndex = 23;
-            this.buttonValistagiaire.Text = "&Valider";
-            this.buttonValistagiaire.UseVisualStyleBackColor = true;
-            this.buttonValistagiaire.Click += new System.EventHandler(this.ButtonValistagiaire_Click);
-            // 
-            // buttonSupprimerStage
-            // 
-            this.buttonSupprimerStage.Enabled = false;
-            this.buttonSupprimerStage.Location = new System.Drawing.Point(143, 367);
-            this.buttonSupprimerStage.Name = "buttonSupprimerStage";
-            this.buttonSupprimerStage.Size = new System.Drawing.Size(111, 23);
-            this.buttonSupprimerStage.TabIndex = 4;
-            this.buttonSupprimerStage.Text = "&Supprimer Stage";
-            this.buttonSupprimerStage.UseVisualStyleBackColor = true;
-            this.buttonSupprimerStage.Click += new System.EventHandler(this.ButtonSupprimerStage_Click);
-            // 
-            // buttonAjouterStage
-            // 
-            this.buttonAjouterStage.Enabled = false;
-            this.buttonAjouterStage.Location = new System.Drawing.Point(15, 367);
-            this.buttonAjouterStage.Name = "buttonAjouterStage";
-            this.buttonAjouterStage.Size = new System.Drawing.Size(117, 23);
-            this.buttonAjouterStage.TabIndex = 4;
-            this.buttonAjouterStage.Text = "&Ajouter Stage";
-            this.buttonAjouterStage.UseVisualStyleBackColor = true;
-            this.buttonAjouterStage.Click += new System.EventHandler(this.ButtonAjouterStage_Click);
-            // 
-            // labelStages
-            // 
-            this.labelStages.AutoSize = true;
-            this.labelStages.Location = new System.Drawing.Point(6, 122);
-            this.labelStages.Name = "labelStages";
-            this.labelStages.Size = new System.Drawing.Size(46, 13);
-            this.labelStages.TabIndex = 8;
-            this.labelStages.Text = "Stages :";
-            // 
-            // labelCourriel
-            // 
-            this.labelCourriel.AutoSize = true;
-            this.labelCourriel.Location = new System.Drawing.Point(6, 97);
-            this.labelCourriel.Name = "labelCourriel";
-            this.labelCourriel.Size = new System.Drawing.Size(48, 13);
-            this.labelCourriel.TabIndex = 7;
-            this.labelCourriel.Text = "Courriel :";
-            // 
-            // labelTelephone
-            // 
-            this.labelTelephone.AutoSize = true;
-            this.labelTelephone.Location = new System.Drawing.Point(6, 71);
-            this.labelTelephone.Name = "labelTelephone";
-            this.labelTelephone.Size = new System.Drawing.Size(107, 13);
-            this.labelTelephone.TabIndex = 6;
-            this.labelTelephone.Text = "Numero Telephone  :";
-            // 
-            // textBoxCourriel
-            // 
-            this.textBoxCourriel.Enabled = false;
-            this.textBoxCourriel.Location = new System.Drawing.Point(119, 94);
-            this.textBoxCourriel.Name = "textBoxCourriel";
-            this.textBoxCourriel.Size = new System.Drawing.Size(146, 20);
-            this.textBoxCourriel.TabIndex = 5;
-            this.textBoxCourriel.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxCourriel_Validating);
-            // 
-            // textBoxTelephone
-            // 
-            this.textBoxTelephone.Enabled = false;
-            this.textBoxTelephone.Location = new System.Drawing.Point(119, 68);
-            this.textBoxTelephone.Name = "textBoxTelephone";
-            this.textBoxTelephone.Size = new System.Drawing.Size(146, 20);
-            this.textBoxTelephone.TabIndex = 4;
-            this.textBoxTelephone.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTelephone_Validating);
-            // 
-            // textBoxNom
-            // 
-            this.textBoxNom.Enabled = false;
-            this.textBoxNom.Location = new System.Drawing.Point(119, 42);
-            this.textBoxNom.Name = "textBoxNom";
-            this.textBoxNom.Size = new System.Drawing.Size(146, 20);
-            this.textBoxNom.TabIndex = 3;
-            this.textBoxNom.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNom_Validating);
-            // 
-            // textBoxNumero
-            // 
-            this.textBoxNumero.Enabled = false;
-            this.textBoxNumero.Location = new System.Drawing.Point(119, 16);
-            this.textBoxNumero.Name = "textBoxNumero";
-            this.textBoxNumero.Size = new System.Drawing.Size(146, 20);
-            this.textBoxNumero.TabIndex = 2;
-            this.textBoxNumero.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNumero_Validating);
-            // 
-            // labelNom
-            // 
-            this.labelNom.AutoSize = true;
-            this.labelNom.Location = new System.Drawing.Point(6, 45);
-            this.labelNom.Name = "labelNom";
-            this.labelNom.Size = new System.Drawing.Size(35, 13);
-            this.labelNom.TabIndex = 1;
-            this.labelNom.Text = "Nom :";
-            // 
-            // labelNumero
-            // 
-            this.labelNumero.AutoSize = true;
-            this.labelNumero.Location = new System.Drawing.Point(6, 19);
-            this.labelNumero.Name = "labelNumero";
-            this.labelNumero.Size = new System.Drawing.Size(100, 13);
-            this.labelNumero.TabIndex = 0;
-            this.labelNumero.Text = "Numero d\'employé :";
-            // 
-            // groupBoxStage
-            // 
-            this.groupBoxStage.Controls.Add(this.buttonAnnuler);
-            this.groupBoxStage.Controls.Add(this.buttonValider);
-            this.groupBoxStage.Controls.Add(this.dateDateFin);
-            this.groupBoxStage.Controls.Add(this.dateDateDebut);
-            this.groupBoxStage.Controls.Add(this.textBoxCommentaire);
-            this.groupBoxStage.Controls.Add(this.labelCommentaire);
-            this.groupBoxStage.Controls.Add(this.labelTitre);
-            this.groupBoxStage.Controls.Add(this.labelNomSuperviseur);
-            this.groupBoxStage.Controls.Add(this.labelDateDebut);
-            this.groupBoxStage.Controls.Add(this.labelDateFin);
-            this.groupBoxStage.Controls.Add(this.textBoxTitre);
-            this.groupBoxStage.Controls.Add(this.textBoxNomSuperviseur);
-            this.groupBoxStage.Location = new System.Drawing.Point(588, 5);
-            this.groupBoxStage.Name = "groupBoxStage";
-            this.groupBoxStage.Size = new System.Drawing.Size(282, 439);
-            this.groupBoxStage.TabIndex = 2;
-            this.groupBoxStage.TabStop = false;
-            this.groupBoxStage.Text = "Info du Stage";
-            // 
-            // buttonAnnuler
-            // 
-            this.buttonAnnuler.Enabled = false;
-            this.buttonAnnuler.Location = new System.Drawing.Point(142, 396);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(123, 23);
-            this.buttonAnnuler.TabIndex = 22;
-            this.buttonAnnuler.Text = "&Annuler";
-            this.buttonAnnuler.UseVisualStyleBackColor = true;
-            this.buttonAnnuler.Click += new System.EventHandler(this.ButtonAnnuler_Click);
-            // 
-            // buttonValider
-            // 
-            this.buttonValider.Enabled = false;
-            this.buttonValider.Location = new System.Drawing.Point(9, 396);
-            this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonValider.Name = "buttonValider";
-            this.buttonValider.Size = new System.Drawing.Size(123, 23);
-            this.buttonValider.TabIndex = 21;
-            this.buttonValider.Text = "&Valider";
-            this.buttonValider.UseVisualStyleBackColor = true;
-            this.buttonValider.Click += new System.EventHandler(this.ButtonValider_Click);
-            // 
-            // dateDateFin
-            // 
-            this.dateDateFin.Enabled = false;
-            this.dateDateFin.Location = new System.Drawing.Point(119, 68);
-            this.dateDateFin.Margin = new System.Windows.Forms.Padding(2);
-            this.dateDateFin.Name = "dateDateFin";
-            this.dateDateFin.Size = new System.Drawing.Size(146, 20);
-            this.dateDateFin.TabIndex = 20;
-            // 
-            // dateDateDebut
-            // 
-            this.dateDateDebut.Enabled = false;
-            this.dateDateDebut.Location = new System.Drawing.Point(119, 42);
-            this.dateDateDebut.Margin = new System.Windows.Forms.Padding(2);
-            this.dateDateDebut.Name = "dateDateDebut";
-            this.dateDateDebut.Size = new System.Drawing.Size(146, 20);
-            this.dateDateDebut.TabIndex = 19;
-            // 
-            // textBoxCommentaire
-            // 
-            this.textBoxCommentaire.Enabled = false;
-            this.textBoxCommentaire.Location = new System.Drawing.Point(9, 138);
-            this.textBoxCommentaire.Name = "textBoxCommentaire";
-            this.textBoxCommentaire.Size = new System.Drawing.Size(257, 238);
-            this.textBoxCommentaire.TabIndex = 18;
-            this.textBoxCommentaire.Text = "";
-            // 
-            // labelCommentaire
-            // 
-            this.labelCommentaire.AutoSize = true;
-            this.labelCommentaire.Location = new System.Drawing.Point(6, 122);
-            this.labelCommentaire.Name = "labelCommentaire";
-            this.labelCommentaire.Size = new System.Drawing.Size(74, 13);
-            this.labelCommentaire.TabIndex = 17;
-            this.labelCommentaire.Text = "Commentaire :";
-            // 
-            // labelTitre
-            // 
-            this.labelTitre.AutoSize = true;
-            this.labelTitre.Location = new System.Drawing.Point(6, 19);
-            this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(34, 13);
-            this.labelTitre.TabIndex = 9;
-            this.labelTitre.Text = "Titre :";
-            // 
-            // labelNomSuperviseur
-            // 
-            this.labelNomSuperviseur.AutoSize = true;
-            this.labelNomSuperviseur.Location = new System.Drawing.Point(6, 97);
-            this.labelNomSuperviseur.Name = "labelNomSuperviseur";
-            this.labelNomSuperviseur.Size = new System.Drawing.Size(107, 13);
-            this.labelNomSuperviseur.TabIndex = 16;
-            this.labelNomSuperviseur.Text = "Nom du superviseur :";
-            // 
-            // labelDateDebut
-            // 
-            this.labelDateDebut.AutoSize = true;
-            this.labelDateDebut.Location = new System.Drawing.Point(6, 45);
-            this.labelDateDebut.Name = "labelDateDebut";
-            this.labelDateDebut.Size = new System.Drawing.Size(68, 13);
-            this.labelDateDebut.TabIndex = 10;
-            this.labelDateDebut.Text = "Date Debut :";
-            // 
-            // labelDateFin
-            // 
-            this.labelDateFin.AutoSize = true;
-            this.labelDateFin.Location = new System.Drawing.Point(6, 71);
-            this.labelDateFin.Name = "labelDateFin";
-            this.labelDateFin.Size = new System.Drawing.Size(56, 13);
-            this.labelDateFin.TabIndex = 15;
-            this.labelDateFin.Text = "Date Fin  :";
-            // 
-            // textBoxTitre
-            // 
-            this.textBoxTitre.Enabled = false;
-            this.textBoxTitre.Location = new System.Drawing.Point(119, 16);
-            this.textBoxTitre.Name = "textBoxTitre";
-            this.textBoxTitre.Size = new System.Drawing.Size(146, 20);
-            this.textBoxTitre.TabIndex = 11;
-            this.textBoxTitre.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTitre_Validating);
-            // 
-            // textBoxNomSuperviseur
-            // 
-            this.textBoxNomSuperviseur.Enabled = false;
-            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(119, 94);
-            this.textBoxNomSuperviseur.Name = "textBoxNomSuperviseur";
-            this.textBoxNomSuperviseur.Size = new System.Drawing.Size(146, 20);
-            this.textBoxNomSuperviseur.TabIndex = 14;
-            this.textBoxNomSuperviseur.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNomSuperviseur_Validating);
-            // 
-            // buttonSauvegard
-            // 
-            this.buttonSauvegard.Location = new System.Drawing.Point(159, 401);
-            this.buttonSauvegard.Name = "buttonSauvegard";
-            this.buttonSauvegard.Size = new System.Drawing.Size(135, 43);
-            this.buttonSauvegard.TabIndex = 4;
-            this.buttonSauvegard.Text = "&Sauvegarder Information";
-            this.buttonSauvegard.UseVisualStyleBackColor = true;
-            this.buttonSauvegard.Click += new System.EventHandler(this.ButtonSauvegard_Click);
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
-            // buttonChargerXML
-            // 
-            this.buttonChargerXML.Location = new System.Drawing.Point(12, 401);
-            this.buttonChargerXML.Name = "buttonChargerXML";
-            this.buttonChargerXML.Size = new System.Drawing.Size(135, 43);
-            this.buttonChargerXML.TabIndex = 5;
-            this.buttonChargerXML.Text = "&Charger Fichier XML";
-            this.buttonChargerXML.UseVisualStyleBackColor = true;
-            this.buttonChargerXML.Click += new System.EventHandler(this.ButtonChargerXML_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.DefaultExt = "xml";
-            this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "xml file |*.xml| text file |*.txt";
-            // 
-            // titreDataGridViewTextBoxColumn
-            // 
-            this.titreDataGridViewTextBoxColumn.DataPropertyName = "titre";
-            this.titreDataGridViewTextBoxColumn.HeaderText = "Titre :";
-            this.titreDataGridViewTextBoxColumn.Name = "titreDataGridViewTextBoxColumn";
-            this.titreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stageBindingSource
-            // 
-            this.stageBindingSource.DataSource = typeof(TP1.Stage);
             // 
             // nomDataGridViewTextBoxColumn
             // 
@@ -550,18 +164,439 @@
             // 
             this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
             // 
+            // buttonSupprimerStagiaire
+            // 
+            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(196, 444);
+            this.buttonSupprimerStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
+            this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(172, 28);
+            this.buttonSupprimerStagiaire.TabIndex = 3;
+            this.buttonSupprimerStagiaire.Text = "&Supprimer Stagiaire";
+            this.buttonSupprimerStagiaire.UseVisualStyleBackColor = true;
+            this.buttonSupprimerStagiaire.Click += new System.EventHandler(this.ButtonSupprimerStagiaire_Click);
+            // 
+            // buttonAjouterStagiaire
+            // 
+            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(8, 444);
+            this.buttonAjouterStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
+            this.buttonAjouterStagiaire.Size = new System.Drawing.Size(180, 28);
+            this.buttonAjouterStagiaire.TabIndex = 1;
+            this.buttonAjouterStagiaire.Text = "&Ajouter Stagiaire";
+            this.buttonAjouterStagiaire.UseVisualStyleBackColor = true;
+            this.buttonAjouterStagiaire.Click += new System.EventHandler(this.ButtonAjouterStagiaire_Click);
+            // 
+            // buttonRechercher
+            // 
+            this.buttonRechercher.Location = new System.Drawing.Point(268, 372);
+            this.buttonRechercher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRechercher.Name = "buttonRechercher";
+            this.buttonRechercher.Size = new System.Drawing.Size(100, 28);
+            this.buttonRechercher.TabIndex = 0;
+            this.buttonRechercher.Text = "Rechercher";
+            this.buttonRechercher.UseVisualStyleBackColor = true;
+            this.buttonRechercher.Click += new System.EventHandler(this.ButtonRechercher_Click);
+            // 
+            // textBoxRecherche
+            // 
+            this.textBoxRecherche.Location = new System.Drawing.Point(8, 375);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxRecherche.Name = "textBoxRecherche";
+            this.textBoxRecherche.Size = new System.Drawing.Size(251, 22);
+            this.textBoxRecherche.TabIndex = 0;
+            // 
+            // groupBoxStagiaire
+            // 
+            this.groupBoxStagiaire.Controls.Add(this.dataGridStage);
+            this.groupBoxStagiaire.Controls.Add(this.buttonAnnulerStagiaire);
+            this.groupBoxStagiaire.Controls.Add(this.buttonValistagiaire);
+            this.groupBoxStagiaire.Controls.Add(this.buttonSupprimerStage);
+            this.groupBoxStagiaire.Controls.Add(this.buttonAjouterStage);
+            this.groupBoxStagiaire.Controls.Add(this.labelStages);
+            this.groupBoxStagiaire.Controls.Add(this.labelCourriel);
+            this.groupBoxStagiaire.Controls.Add(this.labelTelephone);
+            this.groupBoxStagiaire.Controls.Add(this.textBoxCourriel);
+            this.groupBoxStagiaire.Controls.Add(this.textBoxTelephone);
+            this.groupBoxStagiaire.Controls.Add(this.textBoxNom);
+            this.groupBoxStagiaire.Controls.Add(this.textBoxNumero);
+            this.groupBoxStagiaire.Controls.Add(this.labelNom);
+            this.groupBoxStagiaire.Controls.Add(this.labelNumero);
+            this.groupBoxStagiaire.Location = new System.Drawing.Point(400, 6);
+            this.groupBoxStagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStagiaire.Name = "groupBoxStagiaire";
+            this.groupBoxStagiaire.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStagiaire.Size = new System.Drawing.Size(376, 540);
+            this.groupBoxStagiaire.TabIndex = 1;
+            this.groupBoxStagiaire.TabStop = false;
+            this.groupBoxStagiaire.Text = "Info du Stagiaire";
+            // 
+            // dataGridStage
+            // 
+            this.dataGridStage.AllowUserToAddRows = false;
+            this.dataGridStage.AllowUserToDeleteRows = false;
+            this.dataGridStage.AllowUserToResizeColumns = false;
+            this.dataGridStage.AllowUserToResizeRows = false;
+            this.dataGridStage.AutoGenerateColumns = false;
+            this.dataGridStage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridStage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titreDataGridViewTextBoxColumn});
+            this.dataGridStage.DataSource = this.stageBindingSource;
+            this.dataGridStage.Enabled = false;
+            this.dataGridStage.Location = new System.Drawing.Point(11, 170);
+            this.dataGridStage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridStage.MultiSelect = false;
+            this.dataGridStage.Name = "dataGridStage";
+            this.dataGridStage.ReadOnly = true;
+            this.dataGridStage.RowHeadersVisible = false;
+            this.dataGridStage.RowHeadersWidth = 51;
+            this.dataGridStage.RowTemplate.Height = 24;
+            this.dataGridStage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridStage.Size = new System.Drawing.Size(341, 267);
+            this.dataGridStage.TabIndex = 24;
+            this.dataGridStage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStage_CellClick);
+            // 
+            // titreDataGridViewTextBoxColumn
+            // 
+            this.titreDataGridViewTextBoxColumn.DataPropertyName = "titre";
+            this.titreDataGridViewTextBoxColumn.HeaderText = "Titre :";
+            this.titreDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.titreDataGridViewTextBoxColumn.Name = "titreDataGridViewTextBoxColumn";
+            this.titreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stageBindingSource
+            // 
+            this.stageBindingSource.DataSource = typeof(TP1.Stage);
+            // 
+            // buttonAnnulerStagiaire
+            // 
+            this.buttonAnnulerStagiaire.Enabled = false;
+            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(191, 500);
+            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
+            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(161, 28);
+            this.buttonAnnulerStagiaire.TabIndex = 23;
+            this.buttonAnnulerStagiaire.Text = "&Annuler";
+            this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
+            this.buttonAnnulerStagiaire.Click += new System.EventHandler(this.ButtonAnnulerStagiaire_Click);
+            // 
+            // buttonValistagiaire
+            // 
+            this.buttonValistagiaire.Enabled = false;
+            this.buttonValistagiaire.Location = new System.Drawing.Point(12, 500);
+            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValistagiaire.Name = "buttonValistagiaire";
+            this.buttonValistagiaire.Size = new System.Drawing.Size(164, 28);
+            this.buttonValistagiaire.TabIndex = 23;
+            this.buttonValistagiaire.Text = "&Valider";
+            this.buttonValistagiaire.UseVisualStyleBackColor = true;
+            this.buttonValistagiaire.Click += new System.EventHandler(this.ButtonValistagiaire_Click);
+            this.buttonValistagiaire.Validating += new System.ComponentModel.CancelEventHandler(this.buttonValistagiaire_Validating);
+            // 
+            // buttonSupprimerStage
+            // 
+            this.buttonSupprimerStage.Enabled = false;
+            this.buttonSupprimerStage.Location = new System.Drawing.Point(191, 452);
+            this.buttonSupprimerStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSupprimerStage.Name = "buttonSupprimerStage";
+            this.buttonSupprimerStage.Size = new System.Drawing.Size(148, 28);
+            this.buttonSupprimerStage.TabIndex = 4;
+            this.buttonSupprimerStage.Text = "&Supprimer Stage";
+            this.buttonSupprimerStage.UseVisualStyleBackColor = true;
+            this.buttonSupprimerStage.Click += new System.EventHandler(this.ButtonSupprimerStage_Click);
+            // 
+            // buttonAjouterStage
+            // 
+            this.buttonAjouterStage.Enabled = false;
+            this.buttonAjouterStage.Location = new System.Drawing.Point(20, 452);
+            this.buttonAjouterStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAjouterStage.Name = "buttonAjouterStage";
+            this.buttonAjouterStage.Size = new System.Drawing.Size(156, 28);
+            this.buttonAjouterStage.TabIndex = 4;
+            this.buttonAjouterStage.Text = "&Ajouter Stage";
+            this.buttonAjouterStage.UseVisualStyleBackColor = true;
+            this.buttonAjouterStage.Click += new System.EventHandler(this.ButtonAjouterStage_Click);
+            // 
+            // labelStages
+            // 
+            this.labelStages.AutoSize = true;
+            this.labelStages.Location = new System.Drawing.Point(8, 150);
+            this.labelStages.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStages.Name = "labelStages";
+            this.labelStages.Size = new System.Drawing.Size(60, 17);
+            this.labelStages.TabIndex = 8;
+            this.labelStages.Text = "Stages :";
+            // 
+            // labelCourriel
+            // 
+            this.labelCourriel.AutoSize = true;
+            this.labelCourriel.Location = new System.Drawing.Point(8, 119);
+            this.labelCourriel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCourriel.Name = "labelCourriel";
+            this.labelCourriel.Size = new System.Drawing.Size(65, 17);
+            this.labelCourriel.TabIndex = 7;
+            this.labelCourriel.Text = "Courriel :";
+            // 
+            // labelTelephone
+            // 
+            this.labelTelephone.AutoSize = true;
+            this.labelTelephone.Location = new System.Drawing.Point(8, 87);
+            this.labelTelephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTelephone.Name = "labelTelephone";
+            this.labelTelephone.Size = new System.Drawing.Size(142, 17);
+            this.labelTelephone.TabIndex = 6;
+            this.labelTelephone.Text = "Numero Telephone  :";
+            // 
+            // textBoxCourriel
+            // 
+            this.textBoxCourriel.Enabled = false;
+            this.textBoxCourriel.Location = new System.Drawing.Point(159, 116);
+            this.textBoxCourriel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCourriel.Name = "textBoxCourriel";
+            this.textBoxCourriel.Size = new System.Drawing.Size(193, 22);
+            this.textBoxCourriel.TabIndex = 5;
+            this.textBoxCourriel.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxCourriel_Validating);
+            // 
+            // textBoxTelephone
+            // 
+            this.textBoxTelephone.Enabled = false;
+            this.textBoxTelephone.Location = new System.Drawing.Point(159, 84);
+            this.textBoxTelephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTelephone.Name = "textBoxTelephone";
+            this.textBoxTelephone.Size = new System.Drawing.Size(193, 22);
+            this.textBoxTelephone.TabIndex = 4;
+            this.textBoxTelephone.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTelephone_Validating);
+            // 
+            // textBoxNom
+            // 
+            this.textBoxNom.Enabled = false;
+            this.textBoxNom.Location = new System.Drawing.Point(159, 52);
+            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNom.Name = "textBoxNom";
+            this.textBoxNom.Size = new System.Drawing.Size(193, 22);
+            this.textBoxNom.TabIndex = 3;
+            this.textBoxNom.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNom_Validating);
+            // 
+            // textBoxNumero
+            // 
+            this.textBoxNumero.Enabled = false;
+            this.textBoxNumero.Location = new System.Drawing.Point(159, 20);
+            this.textBoxNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNumero.Name = "textBoxNumero";
+            this.textBoxNumero.Size = new System.Drawing.Size(193, 22);
+            this.textBoxNumero.TabIndex = 2;
+            this.textBoxNumero.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNumero_Validating);
+            // 
+            // labelNom
+            // 
+            this.labelNom.AutoSize = true;
+            this.labelNom.Location = new System.Drawing.Point(8, 55);
+            this.labelNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNom.Name = "labelNom";
+            this.labelNom.Size = new System.Drawing.Size(45, 17);
+            this.labelNom.TabIndex = 1;
+            this.labelNom.Text = "Nom :";
+            // 
+            // labelNumero
+            // 
+            this.labelNumero.AutoSize = true;
+            this.labelNumero.Location = new System.Drawing.Point(8, 23);
+            this.labelNumero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNumero.Name = "labelNumero";
+            this.labelNumero.Size = new System.Drawing.Size(134, 17);
+            this.labelNumero.TabIndex = 0;
+            this.labelNumero.Text = "Numero d\'employé :";
+            // 
+            // groupBoxStage
+            // 
+            this.groupBoxStage.Controls.Add(this.buttonAnnuler);
+            this.groupBoxStage.Controls.Add(this.buttonValider);
+            this.groupBoxStage.Controls.Add(this.dateDateFin);
+            this.groupBoxStage.Controls.Add(this.dateDateDebut);
+            this.groupBoxStage.Controls.Add(this.textBoxCommentaire);
+            this.groupBoxStage.Controls.Add(this.labelCommentaire);
+            this.groupBoxStage.Controls.Add(this.labelTitre);
+            this.groupBoxStage.Controls.Add(this.labelNomSuperviseur);
+            this.groupBoxStage.Controls.Add(this.labelDateDebut);
+            this.groupBoxStage.Controls.Add(this.labelDateFin);
+            this.groupBoxStage.Controls.Add(this.textBoxTitre);
+            this.groupBoxStage.Controls.Add(this.textBoxNomSuperviseur);
+            this.groupBoxStage.Location = new System.Drawing.Point(784, 6);
+            this.groupBoxStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStage.Name = "groupBoxStage";
+            this.groupBoxStage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxStage.Size = new System.Drawing.Size(376, 540);
+            this.groupBoxStage.TabIndex = 2;
+            this.groupBoxStage.TabStop = false;
+            this.groupBoxStage.Text = "Info du Stage";
+            // 
+            // buttonAnnuler
+            // 
+            this.buttonAnnuler.Enabled = false;
+            this.buttonAnnuler.Location = new System.Drawing.Point(189, 487);
+            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnuler.Name = "buttonAnnuler";
+            this.buttonAnnuler.Size = new System.Drawing.Size(164, 28);
+            this.buttonAnnuler.TabIndex = 22;
+            this.buttonAnnuler.Text = "&Annuler";
+            this.buttonAnnuler.UseVisualStyleBackColor = true;
+            this.buttonAnnuler.Click += new System.EventHandler(this.ButtonAnnuler_Click);
+            // 
+            // buttonValider
+            // 
+            this.buttonValider.Enabled = false;
+            this.buttonValider.Location = new System.Drawing.Point(12, 487);
+            this.buttonValider.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(164, 28);
+            this.buttonValider.TabIndex = 21;
+            this.buttonValider.Text = "&Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.ButtonValider_Click);
+            // 
+            // dateDateFin
+            // 
+            this.dateDateFin.Enabled = false;
+            this.dateDateFin.Location = new System.Drawing.Point(159, 84);
+            this.dateDateFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateDateFin.Name = "dateDateFin";
+            this.dateDateFin.Size = new System.Drawing.Size(193, 22);
+            this.dateDateFin.TabIndex = 20;
+            // 
+            // dateDateDebut
+            // 
+            this.dateDateDebut.Enabled = false;
+            this.dateDateDebut.Location = new System.Drawing.Point(159, 52);
+            this.dateDateDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateDateDebut.Name = "dateDateDebut";
+            this.dateDateDebut.Size = new System.Drawing.Size(193, 22);
+            this.dateDateDebut.TabIndex = 19;
+            // 
+            // textBoxCommentaire
+            // 
+            this.textBoxCommentaire.Enabled = false;
+            this.textBoxCommentaire.Location = new System.Drawing.Point(12, 170);
+            this.textBoxCommentaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCommentaire.Name = "textBoxCommentaire";
+            this.textBoxCommentaire.Size = new System.Drawing.Size(341, 292);
+            this.textBoxCommentaire.TabIndex = 18;
+            this.textBoxCommentaire.Text = "";
+            // 
+            // labelCommentaire
+            // 
+            this.labelCommentaire.AutoSize = true;
+            this.labelCommentaire.Location = new System.Drawing.Point(8, 150);
+            this.labelCommentaire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCommentaire.Name = "labelCommentaire";
+            this.labelCommentaire.Size = new System.Drawing.Size(99, 17);
+            this.labelCommentaire.TabIndex = 17;
+            this.labelCommentaire.Text = "Commentaire :";
+            // 
+            // labelTitre
+            // 
+            this.labelTitre.AutoSize = true;
+            this.labelTitre.Location = new System.Drawing.Point(8, 23);
+            this.labelTitre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitre.Name = "labelTitre";
+            this.labelTitre.Size = new System.Drawing.Size(45, 17);
+            this.labelTitre.TabIndex = 9;
+            this.labelTitre.Text = "Titre :";
+            // 
+            // labelNomSuperviseur
+            // 
+            this.labelNomSuperviseur.AutoSize = true;
+            this.labelNomSuperviseur.Location = new System.Drawing.Point(8, 119);
+            this.labelNomSuperviseur.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNomSuperviseur.Name = "labelNomSuperviseur";
+            this.labelNomSuperviseur.Size = new System.Drawing.Size(143, 17);
+            this.labelNomSuperviseur.TabIndex = 16;
+            this.labelNomSuperviseur.Text = "Nom du superviseur :";
+            // 
+            // labelDateDebut
+            // 
+            this.labelDateDebut.AutoSize = true;
+            this.labelDateDebut.Location = new System.Drawing.Point(8, 55);
+            this.labelDateDebut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDateDebut.Name = "labelDateDebut";
+            this.labelDateDebut.Size = new System.Drawing.Size(88, 17);
+            this.labelDateDebut.TabIndex = 10;
+            this.labelDateDebut.Text = "Date Debut :";
+            // 
+            // labelDateFin
+            // 
+            this.labelDateFin.AutoSize = true;
+            this.labelDateFin.Location = new System.Drawing.Point(8, 87);
+            this.labelDateFin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDateFin.Name = "labelDateFin";
+            this.labelDateFin.Size = new System.Drawing.Size(73, 17);
+            this.labelDateFin.TabIndex = 15;
+            this.labelDateFin.Text = "Date Fin  :";
+            // 
+            // textBoxTitre
+            // 
+            this.textBoxTitre.Enabled = false;
+            this.textBoxTitre.Location = new System.Drawing.Point(159, 20);
+            this.textBoxTitre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTitre.Name = "textBoxTitre";
+            this.textBoxTitre.Size = new System.Drawing.Size(193, 22);
+            this.textBoxTitre.TabIndex = 11;
+            this.textBoxTitre.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTitre_Validating);
+            // 
+            // textBoxNomSuperviseur
+            // 
+            this.textBoxNomSuperviseur.Enabled = false;
+            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(159, 116);
+            this.textBoxNomSuperviseur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNomSuperviseur.Name = "textBoxNomSuperviseur";
+            this.textBoxNomSuperviseur.Size = new System.Drawing.Size(193, 22);
+            this.textBoxNomSuperviseur.TabIndex = 14;
+            this.textBoxNomSuperviseur.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNomSuperviseur_Validating);
+            // 
+            // buttonSauvegard
+            // 
+            this.buttonSauvegard.Location = new System.Drawing.Point(212, 494);
+            this.buttonSauvegard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSauvegard.Name = "buttonSauvegard";
+            this.buttonSauvegard.Size = new System.Drawing.Size(180, 53);
+            this.buttonSauvegard.TabIndex = 4;
+            this.buttonSauvegard.Text = "&Sauvegarder Information";
+            this.buttonSauvegard.UseVisualStyleBackColor = true;
+            this.buttonSauvegard.Click += new System.EventHandler(this.ButtonSauvegard_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // buttonChargerXML
+            // 
+            this.buttonChargerXML.Location = new System.Drawing.Point(16, 494);
+            this.buttonChargerXML.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonChargerXML.Name = "buttonChargerXML";
+            this.buttonChargerXML.Size = new System.Drawing.Size(180, 53);
+            this.buttonChargerXML.TabIndex = 5;
+            this.buttonChargerXML.Text = "&Charger Fichier XML";
+            this.buttonChargerXML.UseVisualStyleBackColor = true;
+            this.buttonChargerXML.Click += new System.EventHandler(this.ButtonChargerXML_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "xml";
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "xml file |*.xml| text file |*.txt";
+            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(883, 450);
+            this.ClientSize = new System.Drawing.Size(1177, 554);
             this.Controls.Add(this.buttonChargerXML);
             this.Controls.Add(this.buttonSauvegard);
             this.Controls.Add(this.groupBoxStage);
             this.Controls.Add(this.groupBoxStagiaire);
             this.Controls.Add(this.groupBoxListe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPrincipal";
@@ -571,14 +606,14 @@
             this.groupBoxListe.ResumeLayout(false);
             this.groupBoxListe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.groupBoxStagiaire.ResumeLayout(false);
             this.groupBoxStagiaire.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).EndInit();
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
