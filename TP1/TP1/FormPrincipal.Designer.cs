@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        // <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
+            this.buttonListeComplete = new System.Windows.Forms.Button();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
-            this.buttonModifierStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
@@ -41,7 +41,6 @@
             this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
             this.buttonValistagiaire = new System.Windows.Forms.Button();
             this.buttonSupprimerStage = new System.Windows.Forms.Button();
-            this.buttonModifierStage = new System.Windows.Forms.Button();
             this.buttonAjouterStage = new System.Windows.Forms.Button();
             this.labelStages = new System.Windows.Forms.Label();
             this.labelCourriel = new System.Windows.Forms.Label();
@@ -68,6 +67,7 @@
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,9 +85,9 @@
             // 
             // groupBoxListe
             // 
+            this.groupBoxListe.Controls.Add(this.buttonListeComplete);
             this.groupBoxListe.Controls.Add(this.dataGridStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonSupprimerStagiaire);
-            this.groupBoxListe.Controls.Add(this.buttonModifierStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonAjouterStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonRechercher);
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
@@ -97,6 +97,17 @@
             this.groupBoxListe.TabIndex = 0;
             this.groupBoxListe.TabStop = false;
             this.groupBoxListe.Text = "Liste De Stagiaire";
+            // 
+            // buttonListeComplete
+            // 
+            this.buttonListeComplete.Enabled = false;
+            this.buttonListeComplete.Location = new System.Drawing.Point(76, 331);
+            this.buttonListeComplete.Name = "buttonListeComplete";
+            this.buttonListeComplete.Size = new System.Drawing.Size(129, 24);
+            this.buttonListeComplete.TabIndex = 26;
+            this.buttonListeComplete.Text = "Afficher Liste Complète";
+            this.buttonListeComplete.UseVisualStyleBackColor = true;
+            this.buttonListeComplete.Click += new System.EventHandler(this.ButtonListeComplete_Click);
             // 
             // dataGridStagiaire
             // 
@@ -121,32 +132,23 @@
             this.dataGridStagiaire.RowHeadersWidth = 51;
             this.dataGridStagiaire.RowTemplate.Height = 24;
             this.dataGridStagiaire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStagiaire.Size = new System.Drawing.Size(270, 278);
+            this.dataGridStagiaire.Size = new System.Drawing.Size(270, 281);
             this.dataGridStagiaire.TabIndex = 25;
-            this.dataGridStagiaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridStagiaire.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStagiaire_CellClick);
             // 
             // buttonSupprimerStagiaire
             // 
-            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(76, 357);
+            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(147, 361);
             this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
             this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(129, 23);
             this.buttonSupprimerStagiaire.TabIndex = 3;
             this.buttonSupprimerStagiaire.Text = "&Supprimer Stagiaire";
             this.buttonSupprimerStagiaire.UseVisualStyleBackColor = true;
-            // 
-            // buttonModifierStagiaire
-            // 
-            this.buttonModifierStagiaire.Location = new System.Drawing.Point(147, 328);
-            this.buttonModifierStagiaire.Name = "buttonModifierStagiaire";
-            this.buttonModifierStagiaire.Size = new System.Drawing.Size(129, 23);
-            this.buttonModifierStagiaire.TabIndex = 2;
-            this.buttonModifierStagiaire.Text = "&Modifier Stagiaire";
-            this.buttonModifierStagiaire.UseVisualStyleBackColor = true;
-            this.buttonModifierStagiaire.Click += new System.EventHandler(this.ButtonModifierStagiaire_Click);
+            this.buttonSupprimerStagiaire.Click += new System.EventHandler(this.ButtonSupprimerStagiaire_Click);
             // 
             // buttonAjouterStagiaire
             // 
-            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(6, 328);
+            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(6, 361);
             this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
             this.buttonAjouterStagiaire.Size = new System.Drawing.Size(135, 23);
             this.buttonAjouterStagiaire.TabIndex = 1;
@@ -156,16 +158,17 @@
             // 
             // buttonRechercher
             // 
-            this.buttonRechercher.Location = new System.Drawing.Point(201, 300);
+            this.buttonRechercher.Location = new System.Drawing.Point(201, 302);
             this.buttonRechercher.Name = "buttonRechercher";
             this.buttonRechercher.Size = new System.Drawing.Size(75, 23);
             this.buttonRechercher.TabIndex = 0;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = true;
+            this.buttonRechercher.Click += new System.EventHandler(this.ButtonRechercher_Click);
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(6, 302);
+            this.textBoxRecherche.Location = new System.Drawing.Point(6, 305);
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(189, 20);
             this.textBoxRecherche.TabIndex = 0;
@@ -176,7 +179,6 @@
             this.groupBoxStagiaire.Controls.Add(this.buttonAnnulerStagiaire);
             this.groupBoxStagiaire.Controls.Add(this.buttonValistagiaire);
             this.groupBoxStagiaire.Controls.Add(this.buttonSupprimerStage);
-            this.groupBoxStagiaire.Controls.Add(this.buttonModifierStage);
             this.groupBoxStagiaire.Controls.Add(this.buttonAjouterStage);
             this.groupBoxStagiaire.Controls.Add(this.labelStages);
             this.groupBoxStagiaire.Controls.Add(this.labelCourriel);
@@ -216,16 +218,17 @@
             this.dataGridStage.RowHeadersWidth = 51;
             this.dataGridStage.RowTemplate.Height = 24;
             this.dataGridStage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStage.Size = new System.Drawing.Size(256, 199);
+            this.dataGridStage.Size = new System.Drawing.Size(256, 217);
             this.dataGridStage.TabIndex = 24;
+            this.dataGridStage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStage_CellClick);
             // 
             // buttonAnnulerStagiaire
             // 
             this.buttonAnnulerStagiaire.Enabled = false;
-            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(154, 406);
+            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(143, 406);
             this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
-            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(111, 23);
+            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(121, 23);
             this.buttonAnnulerStagiaire.TabIndex = 23;
             this.buttonAnnulerStagiaire.Text = "&Annuler";
             this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
@@ -234,10 +237,10 @@
             // buttonValistagiaire
             // 
             this.buttonValistagiaire.Enabled = false;
-            this.buttonValistagiaire.Location = new System.Drawing.Point(15, 406);
+            this.buttonValistagiaire.Location = new System.Drawing.Point(9, 406);
             this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValistagiaire.Name = "buttonValistagiaire";
-            this.buttonValistagiaire.Size = new System.Drawing.Size(111, 23);
+            this.buttonValistagiaire.Size = new System.Drawing.Size(123, 23);
             this.buttonValistagiaire.TabIndex = 23;
             this.buttonValistagiaire.Text = "&Valider";
             this.buttonValistagiaire.UseVisualStyleBackColor = true;
@@ -246,27 +249,18 @@
             // buttonSupprimerStage
             // 
             this.buttonSupprimerStage.Enabled = false;
-            this.buttonSupprimerStage.Location = new System.Drawing.Point(83, 372);
+            this.buttonSupprimerStage.Location = new System.Drawing.Point(143, 367);
             this.buttonSupprimerStage.Name = "buttonSupprimerStage";
             this.buttonSupprimerStage.Size = new System.Drawing.Size(111, 23);
             this.buttonSupprimerStage.TabIndex = 4;
             this.buttonSupprimerStage.Text = "&Supprimer Stage";
             this.buttonSupprimerStage.UseVisualStyleBackColor = true;
-            // 
-            // buttonModifierStage
-            // 
-            this.buttonModifierStage.Enabled = false;
-            this.buttonModifierStage.Location = new System.Drawing.Point(154, 343);
-            this.buttonModifierStage.Name = "buttonModifierStage";
-            this.buttonModifierStage.Size = new System.Drawing.Size(111, 23);
-            this.buttonModifierStage.TabIndex = 4;
-            this.buttonModifierStage.Text = "&Modifier Stage";
-            this.buttonModifierStage.UseVisualStyleBackColor = true;
+            this.buttonSupprimerStage.Click += new System.EventHandler(this.ButtonSupprimerStage_Click);
             // 
             // buttonAjouterStage
             // 
             this.buttonAjouterStage.Enabled = false;
-            this.buttonAjouterStage.Location = new System.Drawing.Point(9, 343);
+            this.buttonAjouterStage.Location = new System.Drawing.Point(15, 367);
             this.buttonAjouterStage.Name = "buttonAjouterStage";
             this.buttonAjouterStage.Size = new System.Drawing.Size(117, 23);
             this.buttonAjouterStage.TabIndex = 4;
@@ -379,10 +373,10 @@
             // buttonAnnuler
             // 
             this.buttonAnnuler.Enabled = false;
-            this.buttonAnnuler.Location = new System.Drawing.Point(150, 396);
+            this.buttonAnnuler.Location = new System.Drawing.Point(142, 396);
             this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(111, 23);
+            this.buttonAnnuler.Size = new System.Drawing.Size(123, 23);
             this.buttonAnnuler.TabIndex = 22;
             this.buttonAnnuler.Text = "&Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
@@ -391,10 +385,10 @@
             // buttonValider
             // 
             this.buttonValider.Enabled = false;
-            this.buttonValider.Location = new System.Drawing.Point(13, 396);
+            this.buttonValider.Location = new System.Drawing.Point(9, 396);
             this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
-            this.buttonValider.Size = new System.Drawing.Size(111, 23);
+            this.buttonValider.Size = new System.Drawing.Size(123, 23);
             this.buttonValider.TabIndex = 21;
             this.buttonValider.Text = "&Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
@@ -512,6 +506,13 @@
             this.buttonChargerXML.TabIndex = 5;
             this.buttonChargerXML.Text = "&Charger Fichier XML";
             this.buttonChargerXML.UseVisualStyleBackColor = true;
+            this.buttonChargerXML.Click += new System.EventHandler(this.ButtonChargerXML_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "xml";
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "xml file |*.xml| text file |*.txt";
             // 
             // titreDataGridViewTextBoxColumn
             // 
@@ -538,7 +539,7 @@
             // 
             this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
-            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 65F;
             this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
             this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
@@ -587,7 +588,6 @@
         private System.Windows.Forms.GroupBox groupBoxListe;
         private System.Windows.Forms.GroupBox groupBoxStagiaire;
         private System.Windows.Forms.GroupBox groupBoxStage;
-        private System.Windows.Forms.Button buttonModifierStagiaire;
         private System.Windows.Forms.Button buttonAjouterStagiaire;
         private System.Windows.Forms.Button buttonRechercher;
         private System.Windows.Forms.TextBox textBoxRecherche;
@@ -603,7 +603,6 @@
         private System.Windows.Forms.Label labelNumero;
         private System.Windows.Forms.Button buttonSauvegard;
         private System.Windows.Forms.Button buttonSupprimerStage;
-        private System.Windows.Forms.Button buttonModifierStage;
         private System.Windows.Forms.Button buttonAjouterStage;
         private System.Windows.Forms.RichTextBox textBoxCommentaire;
         private System.Windows.Forms.Label labelCommentaire;
@@ -624,10 +623,12 @@
         private System.Windows.Forms.DataGridView dataGridStagiaire;
         private System.Windows.Forms.DataGridView dataGridStage;
         private System.Windows.Forms.BindingSource stagiaireBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titreDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource stageBindingSource;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button buttonListeComplete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
     }
 }
 
