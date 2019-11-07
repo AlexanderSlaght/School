@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StagiaireSelecter.cs" />
     <Compile Include="ListDeStagiaire.cs" />
     <Compile Include="Stagiaire.cs" />
     <Compile Include="Stage.cs" />
@@ -79,6 +80,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\ListeDeStagiaire.datasource" />
+    <None Include="Properties\DataSources\Stage.datasource" />
     <None Include="Properties\DataSources\Stagiaire.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

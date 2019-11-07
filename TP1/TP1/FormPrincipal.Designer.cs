@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
             this.buttonModifierStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
@@ -71,13 +68,18 @@
             this.buttonSauvegard = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
+            this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.groupBoxStagiaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +91,9 @@
             this.groupBoxListe.Controls.Add(this.buttonAjouterStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonRechercher);
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
-            this.groupBoxListe.Location = new System.Drawing.Point(16, 6);
-            this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxListe.Location = new System.Drawing.Point(12, 5);
             this.groupBoxListe.Name = "groupBoxListe";
-            this.groupBoxListe.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxListe.Size = new System.Drawing.Size(376, 480);
+            this.groupBoxListe.Size = new System.Drawing.Size(282, 390);
             this.groupBoxListe.TabIndex = 0;
             this.groupBoxListe.TabStop = false;
             this.groupBoxListe.Text = "Liste De Stagiaire";
@@ -105,13 +105,15 @@
             this.dataGridStagiaire.AllowUserToResizeColumns = false;
             this.dataGridStagiaire.AllowUserToResizeRows = false;
             this.dataGridStagiaire.AutoGenerateColumns = false;
+            this.dataGridStagiaire.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStagiaire.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStagiaire.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomDataGridViewTextBoxColumn,
             this.numeroEmployeeDataGridViewTextBoxColumn});
             this.dataGridStagiaire.DataSource = this.stagiaireBindingSource;
             this.dataGridStagiaire.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridStagiaire.Location = new System.Drawing.Point(8, 20);
+            this.dataGridStagiaire.Location = new System.Drawing.Point(6, 16);
+            this.dataGridStagiaire.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridStagiaire.MultiSelect = false;
             this.dataGridStagiaire.Name = "dataGridStagiaire";
             this.dataGridStagiaire.ReadOnly = true;
@@ -119,81 +121,53 @@
             this.dataGridStagiaire.RowHeadersWidth = 51;
             this.dataGridStagiaire.RowTemplate.Height = 24;
             this.dataGridStagiaire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStagiaire.Size = new System.Drawing.Size(360, 342);
+            this.dataGridStagiaire.Size = new System.Drawing.Size(270, 278);
             this.dataGridStagiaire.TabIndex = 25;
             this.dataGridStagiaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // numeroEmployeeDataGridViewTextBoxColumn
-            // 
-            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
-            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
-            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
-            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // stagiaireBindingSource
-            // 
-            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
-            // 
             // buttonSupprimerStagiaire
             // 
-            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(101, 439);
-            this.buttonSupprimerStagiaire.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(76, 357);
             this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
-            this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(172, 28);
+            this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(129, 23);
             this.buttonSupprimerStagiaire.TabIndex = 3;
             this.buttonSupprimerStagiaire.Text = "&Supprimer Stagiaire";
             this.buttonSupprimerStagiaire.UseVisualStyleBackColor = true;
             // 
             // buttonModifierStagiaire
             // 
-            this.buttonModifierStagiaire.Location = new System.Drawing.Point(196, 404);
-            this.buttonModifierStagiaire.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonModifierStagiaire.Location = new System.Drawing.Point(147, 328);
             this.buttonModifierStagiaire.Name = "buttonModifierStagiaire";
-            this.buttonModifierStagiaire.Size = new System.Drawing.Size(172, 28);
+            this.buttonModifierStagiaire.Size = new System.Drawing.Size(129, 23);
             this.buttonModifierStagiaire.TabIndex = 2;
             this.buttonModifierStagiaire.Text = "&Modifier Stagiaire";
             this.buttonModifierStagiaire.UseVisualStyleBackColor = true;
+            this.buttonModifierStagiaire.Click += new System.EventHandler(this.ButtonModifierStagiaire_Click);
             // 
             // buttonAjouterStagiaire
             // 
-            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(8, 404);
-            this.buttonAjouterStagiaire.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(6, 328);
             this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
-            this.buttonAjouterStagiaire.Size = new System.Drawing.Size(180, 28);
+            this.buttonAjouterStagiaire.Size = new System.Drawing.Size(135, 23);
             this.buttonAjouterStagiaire.TabIndex = 1;
             this.buttonAjouterStagiaire.Text = "&Ajouter Stagiaire";
             this.buttonAjouterStagiaire.UseVisualStyleBackColor = true;
+            this.buttonAjouterStagiaire.Click += new System.EventHandler(this.ButtonAjouterStagiaire_Click);
             // 
             // buttonRechercher
             // 
-            this.buttonRechercher.Location = new System.Drawing.Point(268, 369);
-            this.buttonRechercher.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRechercher.Location = new System.Drawing.Point(201, 300);
             this.buttonRechercher.Name = "buttonRechercher";
-            this.buttonRechercher.Size = new System.Drawing.Size(100, 28);
+            this.buttonRechercher.Size = new System.Drawing.Size(75, 23);
             this.buttonRechercher.TabIndex = 0;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = true;
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(8, 372);
-            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxRecherche.Location = new System.Drawing.Point(6, 302);
             this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(251, 22);
+            this.textBoxRecherche.Size = new System.Drawing.Size(189, 20);
             this.textBoxRecherche.TabIndex = 0;
             // 
             // groupBoxStagiaire
@@ -213,71 +187,88 @@
             this.groupBoxStagiaire.Controls.Add(this.textBoxNumero);
             this.groupBoxStagiaire.Controls.Add(this.labelNom);
             this.groupBoxStagiaire.Controls.Add(this.labelNumero);
-            this.groupBoxStagiaire.Location = new System.Drawing.Point(400, 6);
-            this.groupBoxStagiaire.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxStagiaire.Location = new System.Drawing.Point(300, 5);
             this.groupBoxStagiaire.Name = "groupBoxStagiaire";
-            this.groupBoxStagiaire.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxStagiaire.Size = new System.Drawing.Size(376, 540);
+            this.groupBoxStagiaire.Size = new System.Drawing.Size(282, 439);
             this.groupBoxStagiaire.TabIndex = 1;
             this.groupBoxStagiaire.TabStop = false;
             this.groupBoxStagiaire.Text = "Info du Stagiaire";
             // 
             // dataGridStage
             // 
+            this.dataGridStage.AllowUserToAddRows = false;
+            this.dataGridStage.AllowUserToDeleteRows = false;
+            this.dataGridStage.AllowUserToResizeColumns = false;
+            this.dataGridStage.AllowUserToResizeRows = false;
+            this.dataGridStage.AutoGenerateColumns = false;
+            this.dataGridStage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStage.Location = new System.Drawing.Point(11, 170);
+            this.dataGridStage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titreDataGridViewTextBoxColumn});
+            this.dataGridStage.DataSource = this.stageBindingSource;
+            this.dataGridStage.Enabled = false;
+            this.dataGridStage.Location = new System.Drawing.Point(8, 138);
+            this.dataGridStage.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridStage.MultiSelect = false;
             this.dataGridStage.Name = "dataGridStage";
+            this.dataGridStage.ReadOnly = true;
+            this.dataGridStage.RowHeadersVisible = false;
             this.dataGridStage.RowHeadersWidth = 51;
             this.dataGridStage.RowTemplate.Height = 24;
-            this.dataGridStage.Size = new System.Drawing.Size(342, 245);
+            this.dataGridStage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridStage.Size = new System.Drawing.Size(256, 199);
             this.dataGridStage.TabIndex = 24;
             // 
             // buttonAnnulerStagiaire
             // 
-            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(205, 500);
-            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnulerStagiaire.Enabled = false;
+            this.buttonAnnulerStagiaire.Location = new System.Drawing.Point(154, 406);
+            this.buttonAnnulerStagiaire.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnulerStagiaire.Name = "buttonAnnulerStagiaire";
-            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonAnnulerStagiaire.Size = new System.Drawing.Size(111, 23);
             this.buttonAnnulerStagiaire.TabIndex = 23;
             this.buttonAnnulerStagiaire.Text = "&Annuler";
             this.buttonAnnulerStagiaire.UseVisualStyleBackColor = true;
+            this.buttonAnnulerStagiaire.Click += new System.EventHandler(this.ButtonAnnulerStagiaire_Click);
             // 
             // buttonValistagiaire
             // 
-            this.buttonValistagiaire.Location = new System.Drawing.Point(20, 500);
-            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValistagiaire.Enabled = false;
+            this.buttonValistagiaire.Location = new System.Drawing.Point(15, 406);
+            this.buttonValistagiaire.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValistagiaire.Name = "buttonValistagiaire";
-            this.buttonValistagiaire.Size = new System.Drawing.Size(148, 28);
+            this.buttonValistagiaire.Size = new System.Drawing.Size(111, 23);
             this.buttonValistagiaire.TabIndex = 23;
             this.buttonValistagiaire.Text = "&Valider";
             this.buttonValistagiaire.UseVisualStyleBackColor = true;
+            this.buttonValistagiaire.Click += new System.EventHandler(this.ButtonValistagiaire_Click);
             // 
             // buttonSupprimerStage
             // 
-            this.buttonSupprimerStage.Location = new System.Drawing.Point(111, 458);
-            this.buttonSupprimerStage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSupprimerStage.Enabled = false;
+            this.buttonSupprimerStage.Location = new System.Drawing.Point(83, 372);
             this.buttonSupprimerStage.Name = "buttonSupprimerStage";
-            this.buttonSupprimerStage.Size = new System.Drawing.Size(148, 28);
+            this.buttonSupprimerStage.Size = new System.Drawing.Size(111, 23);
             this.buttonSupprimerStage.TabIndex = 4;
             this.buttonSupprimerStage.Text = "&Supprimer Stage";
             this.buttonSupprimerStage.UseVisualStyleBackColor = true;
             // 
             // buttonModifierStage
             // 
-            this.buttonModifierStage.Location = new System.Drawing.Point(205, 422);
-            this.buttonModifierStage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonModifierStage.Enabled = false;
+            this.buttonModifierStage.Location = new System.Drawing.Point(154, 343);
             this.buttonModifierStage.Name = "buttonModifierStage";
-            this.buttonModifierStage.Size = new System.Drawing.Size(148, 28);
+            this.buttonModifierStage.Size = new System.Drawing.Size(111, 23);
             this.buttonModifierStage.TabIndex = 4;
             this.buttonModifierStage.Text = "&Modifier Stage";
             this.buttonModifierStage.UseVisualStyleBackColor = true;
             // 
             // buttonAjouterStage
             // 
-            this.buttonAjouterStage.Location = new System.Drawing.Point(12, 422);
-            this.buttonAjouterStage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAjouterStage.Enabled = false;
+            this.buttonAjouterStage.Location = new System.Drawing.Point(9, 343);
             this.buttonAjouterStage.Name = "buttonAjouterStage";
-            this.buttonAjouterStage.Size = new System.Drawing.Size(156, 28);
+            this.buttonAjouterStage.Size = new System.Drawing.Size(117, 23);
             this.buttonAjouterStage.TabIndex = 4;
             this.buttonAjouterStage.Text = "&Ajouter Stage";
             this.buttonAjouterStage.UseVisualStyleBackColor = true;
@@ -286,86 +277,81 @@
             // labelStages
             // 
             this.labelStages.AutoSize = true;
-            this.labelStages.Location = new System.Drawing.Point(8, 150);
-            this.labelStages.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStages.Location = new System.Drawing.Point(6, 122);
             this.labelStages.Name = "labelStages";
-            this.labelStages.Size = new System.Drawing.Size(60, 17);
+            this.labelStages.Size = new System.Drawing.Size(46, 13);
             this.labelStages.TabIndex = 8;
             this.labelStages.Text = "Stages :";
             // 
             // labelCourriel
             // 
             this.labelCourriel.AutoSize = true;
-            this.labelCourriel.Location = new System.Drawing.Point(8, 119);
-            this.labelCourriel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCourriel.Location = new System.Drawing.Point(6, 97);
             this.labelCourriel.Name = "labelCourriel";
-            this.labelCourriel.Size = new System.Drawing.Size(65, 17);
+            this.labelCourriel.Size = new System.Drawing.Size(48, 13);
             this.labelCourriel.TabIndex = 7;
             this.labelCourriel.Text = "Courriel :";
             // 
             // labelTelephone
             // 
             this.labelTelephone.AutoSize = true;
-            this.labelTelephone.Location = new System.Drawing.Point(8, 87);
-            this.labelTelephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTelephone.Location = new System.Drawing.Point(6, 71);
             this.labelTelephone.Name = "labelTelephone";
-            this.labelTelephone.Size = new System.Drawing.Size(142, 17);
+            this.labelTelephone.Size = new System.Drawing.Size(107, 13);
             this.labelTelephone.TabIndex = 6;
             this.labelTelephone.Text = "Numero Telephone  :";
             // 
             // textBoxCourriel
             // 
-            this.textBoxCourriel.Location = new System.Drawing.Point(159, 116);
-            this.textBoxCourriel.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCourriel.Enabled = false;
+            this.textBoxCourriel.Location = new System.Drawing.Point(119, 94);
             this.textBoxCourriel.Name = "textBoxCourriel";
-            this.textBoxCourriel.Size = new System.Drawing.Size(194, 22);
+            this.textBoxCourriel.Size = new System.Drawing.Size(146, 20);
             this.textBoxCourriel.TabIndex = 5;
             this.textBoxCourriel.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxCourriel_Validating);
             // 
             // textBoxTelephone
             // 
-            this.textBoxTelephone.Location = new System.Drawing.Point(159, 84);
-            this.textBoxTelephone.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxTelephone.Enabled = false;
+            this.textBoxTelephone.Location = new System.Drawing.Point(119, 68);
             this.textBoxTelephone.Name = "textBoxTelephone";
-            this.textBoxTelephone.Size = new System.Drawing.Size(194, 22);
+            this.textBoxTelephone.Size = new System.Drawing.Size(146, 20);
             this.textBoxTelephone.TabIndex = 4;
             this.textBoxTelephone.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTelephone_Validating);
             // 
             // textBoxNom
             // 
-            this.textBoxNom.Location = new System.Drawing.Point(159, 52);
-            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxNom.Enabled = false;
+            this.textBoxNom.Location = new System.Drawing.Point(119, 42);
             this.textBoxNom.Name = "textBoxNom";
-            this.textBoxNom.Size = new System.Drawing.Size(194, 22);
+            this.textBoxNom.Size = new System.Drawing.Size(146, 20);
             this.textBoxNom.TabIndex = 3;
             this.textBoxNom.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNom_Validating);
             // 
             // textBoxNumero
             // 
-            this.textBoxNumero.Location = new System.Drawing.Point(159, 20);
-            this.textBoxNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxNumero.Enabled = false;
+            this.textBoxNumero.Location = new System.Drawing.Point(119, 16);
             this.textBoxNumero.Name = "textBoxNumero";
-            this.textBoxNumero.Size = new System.Drawing.Size(194, 22);
+            this.textBoxNumero.Size = new System.Drawing.Size(146, 20);
             this.textBoxNumero.TabIndex = 2;
             this.textBoxNumero.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNumero_Validating);
             // 
             // labelNom
             // 
             this.labelNom.AutoSize = true;
-            this.labelNom.Location = new System.Drawing.Point(8, 55);
-            this.labelNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNom.Location = new System.Drawing.Point(6, 45);
             this.labelNom.Name = "labelNom";
-            this.labelNom.Size = new System.Drawing.Size(45, 17);
+            this.labelNom.Size = new System.Drawing.Size(35, 13);
             this.labelNom.TabIndex = 1;
             this.labelNom.Text = "Nom :";
             // 
             // labelNumero
             // 
             this.labelNumero.AutoSize = true;
-            this.labelNumero.Location = new System.Drawing.Point(8, 23);
-            this.labelNumero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNumero.Location = new System.Drawing.Point(6, 19);
             this.labelNumero.Name = "labelNumero";
-            this.labelNumero.Size = new System.Drawing.Size(134, 17);
+            this.labelNumero.Size = new System.Drawing.Size(100, 13);
             this.labelNumero.TabIndex = 0;
             this.labelNumero.Text = "Numero d\'employé :";
             // 
@@ -383,11 +369,9 @@
             this.groupBoxStage.Controls.Add(this.labelDateFin);
             this.groupBoxStage.Controls.Add(this.textBoxTitre);
             this.groupBoxStage.Controls.Add(this.textBoxNomSuperviseur);
-            this.groupBoxStage.Location = new System.Drawing.Point(784, 6);
-            this.groupBoxStage.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxStage.Location = new System.Drawing.Point(588, 5);
             this.groupBoxStage.Name = "groupBoxStage";
-            this.groupBoxStage.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxStage.Size = new System.Drawing.Size(376, 540);
+            this.groupBoxStage.Size = new System.Drawing.Size(282, 439);
             this.groupBoxStage.TabIndex = 2;
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Info du Stage";
@@ -395,10 +379,10 @@
             // buttonAnnuler
             // 
             this.buttonAnnuler.Enabled = false;
-            this.buttonAnnuler.Location = new System.Drawing.Point(200, 487);
-            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAnnuler.Location = new System.Drawing.Point(150, 396);
+            this.buttonAnnuler.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(148, 28);
+            this.buttonAnnuler.Size = new System.Drawing.Size(111, 23);
             this.buttonAnnuler.TabIndex = 22;
             this.buttonAnnuler.Text = "&Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
@@ -407,10 +391,10 @@
             // buttonValider
             // 
             this.buttonValider.Enabled = false;
-            this.buttonValider.Location = new System.Drawing.Point(17, 487);
-            this.buttonValider.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonValider.Location = new System.Drawing.Point(13, 396);
+            this.buttonValider.Margin = new System.Windows.Forms.Padding(2);
             this.buttonValider.Name = "buttonValider";
-            this.buttonValider.Size = new System.Drawing.Size(148, 28);
+            this.buttonValider.Size = new System.Drawing.Size(111, 23);
             this.buttonValider.TabIndex = 21;
             this.buttonValider.Text = "&Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
@@ -419,110 +403,102 @@
             // dateDateFin
             // 
             this.dateDateFin.Enabled = false;
-            this.dateDateFin.Location = new System.Drawing.Point(159, 84);
-            this.dateDateFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateDateFin.Location = new System.Drawing.Point(119, 68);
+            this.dateDateFin.Margin = new System.Windows.Forms.Padding(2);
             this.dateDateFin.Name = "dateDateFin";
-            this.dateDateFin.Size = new System.Drawing.Size(194, 22);
+            this.dateDateFin.Size = new System.Drawing.Size(146, 20);
             this.dateDateFin.TabIndex = 20;
             // 
             // dateDateDebut
             // 
             this.dateDateDebut.Enabled = false;
-            this.dateDateDebut.Location = new System.Drawing.Point(159, 52);
-            this.dateDateDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateDateDebut.Location = new System.Drawing.Point(119, 42);
+            this.dateDateDebut.Margin = new System.Windows.Forms.Padding(2);
             this.dateDateDebut.Name = "dateDateDebut";
-            this.dateDateDebut.Size = new System.Drawing.Size(194, 22);
+            this.dateDateDebut.Size = new System.Drawing.Size(146, 20);
             this.dateDateDebut.TabIndex = 19;
             // 
             // textBoxCommentaire
             // 
             this.textBoxCommentaire.Enabled = false;
-            this.textBoxCommentaire.Location = new System.Drawing.Point(12, 170);
-            this.textBoxCommentaire.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCommentaire.Location = new System.Drawing.Point(9, 138);
             this.textBoxCommentaire.Name = "textBoxCommentaire";
-            this.textBoxCommentaire.Size = new System.Drawing.Size(341, 292);
+            this.textBoxCommentaire.Size = new System.Drawing.Size(257, 238);
             this.textBoxCommentaire.TabIndex = 18;
             this.textBoxCommentaire.Text = "";
             // 
             // labelCommentaire
             // 
             this.labelCommentaire.AutoSize = true;
-            this.labelCommentaire.Location = new System.Drawing.Point(8, 150);
-            this.labelCommentaire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCommentaire.Location = new System.Drawing.Point(6, 122);
             this.labelCommentaire.Name = "labelCommentaire";
-            this.labelCommentaire.Size = new System.Drawing.Size(99, 17);
+            this.labelCommentaire.Size = new System.Drawing.Size(74, 13);
             this.labelCommentaire.TabIndex = 17;
             this.labelCommentaire.Text = "Commentaire :";
             // 
             // labelTitre
             // 
             this.labelTitre.AutoSize = true;
-            this.labelTitre.Location = new System.Drawing.Point(8, 23);
-            this.labelTitre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitre.Location = new System.Drawing.Point(6, 19);
             this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(45, 17);
+            this.labelTitre.Size = new System.Drawing.Size(34, 13);
             this.labelTitre.TabIndex = 9;
             this.labelTitre.Text = "Titre :";
             // 
             // labelNomSuperviseur
             // 
             this.labelNomSuperviseur.AutoSize = true;
-            this.labelNomSuperviseur.Location = new System.Drawing.Point(8, 119);
-            this.labelNomSuperviseur.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNomSuperviseur.Location = new System.Drawing.Point(6, 97);
             this.labelNomSuperviseur.Name = "labelNomSuperviseur";
-            this.labelNomSuperviseur.Size = new System.Drawing.Size(143, 17);
+            this.labelNomSuperviseur.Size = new System.Drawing.Size(107, 13);
             this.labelNomSuperviseur.TabIndex = 16;
             this.labelNomSuperviseur.Text = "Nom du superviseur :";
             // 
             // labelDateDebut
             // 
             this.labelDateDebut.AutoSize = true;
-            this.labelDateDebut.Location = new System.Drawing.Point(8, 55);
-            this.labelDateDebut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDateDebut.Location = new System.Drawing.Point(6, 45);
             this.labelDateDebut.Name = "labelDateDebut";
-            this.labelDateDebut.Size = new System.Drawing.Size(88, 17);
+            this.labelDateDebut.Size = new System.Drawing.Size(68, 13);
             this.labelDateDebut.TabIndex = 10;
             this.labelDateDebut.Text = "Date Debut :";
             // 
             // labelDateFin
             // 
             this.labelDateFin.AutoSize = true;
-            this.labelDateFin.Location = new System.Drawing.Point(8, 87);
-            this.labelDateFin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDateFin.Location = new System.Drawing.Point(6, 71);
             this.labelDateFin.Name = "labelDateFin";
-            this.labelDateFin.Size = new System.Drawing.Size(73, 17);
+            this.labelDateFin.Size = new System.Drawing.Size(56, 13);
             this.labelDateFin.TabIndex = 15;
             this.labelDateFin.Text = "Date Fin  :";
             // 
             // textBoxTitre
             // 
             this.textBoxTitre.Enabled = false;
-            this.textBoxTitre.Location = new System.Drawing.Point(159, 20);
-            this.textBoxTitre.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxTitre.Location = new System.Drawing.Point(119, 16);
             this.textBoxTitre.Name = "textBoxTitre";
-            this.textBoxTitre.Size = new System.Drawing.Size(194, 22);
+            this.textBoxTitre.Size = new System.Drawing.Size(146, 20);
             this.textBoxTitre.TabIndex = 11;
             this.textBoxTitre.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxTitre_Validating);
             // 
             // textBoxNomSuperviseur
             // 
             this.textBoxNomSuperviseur.Enabled = false;
-            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(159, 116);
-            this.textBoxNomSuperviseur.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(119, 94);
             this.textBoxNomSuperviseur.Name = "textBoxNomSuperviseur";
-            this.textBoxNomSuperviseur.Size = new System.Drawing.Size(194, 22);
+            this.textBoxNomSuperviseur.Size = new System.Drawing.Size(146, 20);
             this.textBoxNomSuperviseur.TabIndex = 14;
             this.textBoxNomSuperviseur.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxNomSuperviseur_Validating);
             // 
             // buttonSauvegard
             // 
-            this.buttonSauvegard.Location = new System.Drawing.Point(212, 493);
-            this.buttonSauvegard.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSauvegard.Location = new System.Drawing.Point(159, 401);
             this.buttonSauvegard.Name = "buttonSauvegard";
-            this.buttonSauvegard.Size = new System.Drawing.Size(180, 53);
+            this.buttonSauvegard.Size = new System.Drawing.Size(135, 43);
             this.buttonSauvegard.TabIndex = 4;
             this.buttonSauvegard.Text = "&Sauvegarder Information";
             this.buttonSauvegard.UseVisualStyleBackColor = true;
+            this.buttonSauvegard.Click += new System.EventHandler(this.ButtonSauvegard_Click);
             // 
             // errorProvider
             // 
@@ -530,13 +506,23 @@
             // 
             // buttonChargerXML
             // 
-            this.buttonChargerXML.Location = new System.Drawing.Point(16, 494);
-            this.buttonChargerXML.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonChargerXML.Location = new System.Drawing.Point(12, 401);
             this.buttonChargerXML.Name = "buttonChargerXML";
-            this.buttonChargerXML.Size = new System.Drawing.Size(180, 53);
+            this.buttonChargerXML.Size = new System.Drawing.Size(135, 43);
             this.buttonChargerXML.TabIndex = 5;
             this.buttonChargerXML.Text = "&Charger Fichier XML";
             this.buttonChargerXML.UseVisualStyleBackColor = true;
+            // 
+            // titreDataGridViewTextBoxColumn
+            // 
+            this.titreDataGridViewTextBoxColumn.DataPropertyName = "titre";
+            this.titreDataGridViewTextBoxColumn.HeaderText = "Titre :";
+            this.titreDataGridViewTextBoxColumn.Name = "titreDataGridViewTextBoxColumn";
+            this.titreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stageBindingSource
+            // 
+            this.stageBindingSource.DataSource = typeof(TP1.Stage);
             // 
             // nomDataGridViewTextBoxColumn
             // 
@@ -565,17 +551,16 @@
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(1177, 554);
+            this.ClientSize = new System.Drawing.Size(883, 450);
             this.Controls.Add(this.buttonChargerXML);
             this.Controls.Add(this.buttonSauvegard);
             this.Controls.Add(this.groupBoxStage);
             this.Controls.Add(this.groupBoxStagiaire);
             this.Controls.Add(this.groupBoxListe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPrincipal";
@@ -591,6 +576,7 @@
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -638,9 +624,10 @@
         private System.Windows.Forms.DataGridView dataGridStagiaire;
         private System.Windows.Forms.DataGridView dataGridStage;
         private System.Windows.Forms.BindingSource stagiaireBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource stageBindingSource;
     }
 }
 

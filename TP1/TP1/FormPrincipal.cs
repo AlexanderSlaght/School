@@ -21,23 +21,20 @@ namespace TP1
         public void UpdateBindingSourceWithList()
         {
             ListeDeStagiaire.stagiaires = new List<Stagiaire>();
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com"));
-            foreach (Stagiaire n in ListeDeStagiaire.stagiaires)
-            {
-                stagiaireBindingSource.Add(n);
-            }
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com", new List<Stage> { new Stage("hello"), new Stage("bye") }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
+            stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
         }
 
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
@@ -191,10 +188,89 @@ namespace TP1
 
         }
 
-        private void buttonModifierStagiaire_Click(object sender, EventArgs e)
-        {
 
+
+        private void ButtonAjouterStagiaire_Click(object sender, EventArgs e)
+        {
+            StagiaireSelecter.stagiaireSel = null;
+            stageBindingSource.DataSource = new List<Stage>();
+            ActivateStagiaireModify();
         }
 
+        private void ActivateStagiaireModify()
+        {
+            textBoxNumero.Enabled = true;
+            textBoxNom.Enabled = true;
+            textBoxTelephone.Enabled = true;
+            textBoxCourriel.Enabled = true;
+            dataGridStage.Enabled = true;
+            buttonAjouterStage.Enabled = true;
+            buttonSupprimerStage.Enabled = true;
+            buttonModifierStage.Enabled = true;
+            buttonValistagiaire.Enabled = true;
+            buttonAnnulerStagiaire.Enabled = true;
+        }
+
+        private void DeactivateStagiaireModify()
+        {
+            textBoxNumero.Enabled = false;
+            textBoxNumero.Text = "";
+            textBoxNom.Enabled = false;
+            textBoxNom.Text = "";
+            textBoxTelephone.Enabled = false;
+            textBoxTelephone.Text = "";
+            textBoxCourriel.Enabled = false;
+            textBoxCourriel.Text = "";
+            dataGridStage.Enabled = false;
+            buttonAjouterStage.Enabled = false;
+            buttonSupprimerStage.Enabled = false;
+            buttonModifierStage.Enabled = false;
+            buttonValistagiaire.Enabled = false;
+            buttonAnnulerStagiaire.Enabled = false;
+            stageBindingSource.DataSource = null;
+            StagiaireSelecter.stagiaireSel = null;
+        }
+
+        private void ButtonModifierStagiaire_Click(object sender, EventArgs e)
+        {
+            ActivateStagiaireModify();
+            Stagiaire stagiaireToModify = (Stagiaire)stagiaireBindingSource.Current;
+            textBoxNumero.Text = stagiaireToModify.numeroEmployee.ToString();
+            textBoxNom.Text = stagiaireToModify.nom;
+            textBoxTelephone.Text = stagiaireToModify.numeroTelephone;
+            textBoxCourriel.Text = stagiaireToModify.numeroTelephone;
+            stageBindingSource.DataSource = stagiaireToModify.stage;
+            StagiaireSelecter.stagiaireSel = stagiaireToModify;
+        }
+
+        private void ButtonAnnulerStagiaire_Click(object sender, EventArgs e)
+        {
+            DeactivateStagiaireModify();
+        }
+
+        private void ButtonSauvegard_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ButtonValistagiaire_Click(object sender, EventArgs e)
+        {
+            if (StagiaireSelecter.stagiaireSel == null)
+            {
+                stagiaireBindingSource.Add(new Stagiaire(int.Parse(textBoxNumero.Text), textBoxNom.Text, textBoxTelephone.Text, textBoxCourriel.Text, (List<Stage>)stageBindingSource.DataSource));
+                ListeDeStagiaire.stagiaires = (List<Stagiaire>)stagiaireBindingSource.DataSource;
+            }
+            else
+            {
+                StagiaireSelecter.stagiaireSel.nom = textBoxNom.Text;
+                StagiaireSelecter.stagiaireSel.numeroEmployee = int.Parse(textBoxNumero.Text);
+                StagiaireSelecter.stagiaireSel.numeroTelephone = textBoxTelephone.Text;
+                StagiaireSelecter.stagiaireSel.courriel = textBoxCourriel.Text;
+                StagiaireSelecter.stagiaireSel.stage = (List<Stage>)stageBindingSource.DataSource;
+            }
+            DeactivateStagiaireModify();
+            dataGridStagiaire.Update();
+            dataGridStagiaire.Refresh();
+        }
     }
 }

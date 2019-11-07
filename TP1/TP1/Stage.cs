@@ -87,6 +87,15 @@ namespace TP1
             this.m_commentaire = "";
         }
 
+        public Stage(string p_titre)
+        {
+            this.m_titre = p_titre;
+            this.m_dateDebut = null;
+            this.m_dateFin = null;
+            this.m_nomSuperviseur = "";
+            this.m_commentaire = "";
+        }
+
         public override string ToString()
         {
             string stageString = $"\t<stage " +
