@@ -117,6 +117,9 @@ namespace TP1
             {
                 ctrl.Enabled = false;
             }
+            errorProvider.SetError(textBoxTitre, "");
+            errorProvider.SetError(textBoxNomSuperviseur, "");
+            errorProvider.SetError(textBoxCommentaire, "");
         }
 
         //Boutons Charger & Sauvegard----------------------------------------------------------------------------
@@ -209,7 +212,10 @@ namespace TP1
 
         private void ButtonSupprimerStagiaire_Click(object sender, EventArgs e)
         {
-
+            stagiaireBindingSource.Remove(stagiaireBindingSource.Current);
+            ListeDeStagiaire.stagiaires = (List<Stagiaire>)stagiaireBindingSource.DataSource;
+            dataGridStage.Update();
+            dataGridStage.Refresh();
         }
 
         private void ButtonRechercher_Click(object sender, EventArgs e)
@@ -301,6 +307,7 @@ namespace TP1
                 StagiaireSelecteur.stagiaireSel.courriel = textBoxCourriel.Text;
                 StagiaireSelecteur.stagiaireSel.stage = (List<Stage>)stageBindingSource.DataSource;
             }
+            DesactiverStageModifier();
             DesactiverStagiaireModifier();
             dataGridStagiaire.Update();
             dataGridStagiaire.Refresh();
@@ -320,6 +327,8 @@ namespace TP1
             {
                 DesactiverStagiaireModifier();
             }
+            DesactiverStageModifier();
+            errorProvider.Clear();
         }
 
         private void TextBoxNumero_Validating(object sender, CancelEventArgs e)
@@ -327,17 +336,17 @@ namespace TP1
             if (string.IsNullOrEmpty(textBoxNumero.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBoxNumero, "Le numero d'employe ne peut pas etre vide.");
+                this.errorProvider.SetError(textBoxNumero, "Le numero d'employe ne peut pas etre vide.");
             }
             else if(!Int32.TryParse(this.textBoxNumero.Text, out int numEmp))
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre un nombre.");
+                this.errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre un nombre.");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider.Clear();
+                this.errorProvider.Clear();
             }
         }
 
@@ -346,12 +355,12 @@ namespace TP1
             if (string.IsNullOrEmpty(textBoxNom.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBoxNom, "Le nom ne peut pas etre vide.");
+                this.errorProvider.SetError(textBoxNom, "Le nom ne peut pas etre vide.");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider.Clear();
+                this.errorProvider.Clear();
             }
         }
 
@@ -361,12 +370,12 @@ namespace TP1
             if (!telephoneRegex.IsMatch(textBoxTelephone.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBoxTelephone, "Le numero de telephone doit avoir le format 123-456-7890");
+                this.errorProvider.SetError(textBoxTelephone, "Le numero de telephone doit avoir le format 123-456-7890");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider.Clear();
+                this.errorProvider.Clear();
             }
         }
 
@@ -375,18 +384,18 @@ namespace TP1
             if (string.IsNullOrEmpty(textBoxCourriel.Text))
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBoxCourriel, "Le courriel ne doit pas etre vide.");
+                this.errorProvider.SetError(textBoxCourriel, "Le courriel ne doit pas etre vide.");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider.Clear();
+                this.errorProvider.Clear();
             }
         }
 
         private void buttonValistagiaire_Validating(object sender, CancelEventArgs e)
         {
-            
+            bool bonParametres = true;
         }
 
         //Boutons De Info Du Stage----------------------------------------------------------------------------
@@ -416,10 +425,8 @@ namespace TP1
                 this.textBoxTitre.Text = "";
                 this.textBoxNomSuperviseur.Text = "";
                 this.textBoxCommentaire.Text = "";
+                errorProvider.Clear();
             }
-
-
-            Console.WriteLine($"{this.dateDateDebut}");
 
         }
 
@@ -435,7 +442,6 @@ namespace TP1
             if (validation is DialogResult.Yes)
             {
                 DesactiverStageModifier();
-                errorProvider.Clear();
             }
         }
 
