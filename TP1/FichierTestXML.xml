@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <stagiaires>
-	<stagiaire numeroEmploye="1234" nom="EricTrottier" numeroTelephone="111-111-111" courriel="EricTrottier1234@hotmail.com">
+	<stagiaire numeroEmploye="1234" nom="EricTrottier" numeroTelephone="111-111-1111" courriel="EricTrottier1234@hotmail.com">
 		<stage titre="plumber" dateDebut="12-7-2019" dateFin="12-11-2019" nomSuperviseur="Madame Poire" commentaire="Ye mieux d&quot; etre bon le ptit tabarnak"></stage>
 	</stagiaire>
 
