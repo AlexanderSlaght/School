@@ -142,7 +142,6 @@ namespace TP1
                         nouveauStagiaire.numeroTelephone = node.Attributes[2].InnerText;
                         nouveauStagiaire.courriel = node.Attributes[3].InnerText;
                         List<Stage> nouvelleListeDeStage = new List<Stage>();
-                        nouveauStagiaire.stage = nouvelleListeDeStage;
                         foreach (XmlNode child in document.ChildNodes)
                         {
                             if (node.Name == "stage")
@@ -150,14 +149,14 @@ namespace TP1
                                 //Construction de la liste de stage du stagiaire
                                 Stage nouveauStage = new Stage();
                                 nouveauStage.titre = node.Attributes[0].InnerText;
-                                //Il faut convertir les string du document XML en dates valides (format datetimepicker)
-                                //nouveauStage.dateDebut = node.Attributes[1].InnerText;
-                                //nouveauStage.dateFin = node.Attributes[2].InnerText;
+                                nouveauStage.dateDebut = DateTime.ParseExact(node.Attributes[1].InnerText, "dd-MM-yyyy", null);
+                                nouveauStage.dateFin = DateTime.ParseExact(node.Attributes[2].InnerText, "dd-MM-yyyy", null);
                                 nouveauStage.nomSuperviseur = node.Attributes[3].InnerText;
                                 nouveauStage.commentaire = node.Attributes[4].InnerText;
                                 nouvelleListeDeStage.Add(nouveauStage);
                             }
                         }
+                        nouveauStagiaire.stage = nouvelleListeDeStage;
                         ListeDeStagiaire.stagiaires.Add(nouveauStagiaire);
                     }
 
