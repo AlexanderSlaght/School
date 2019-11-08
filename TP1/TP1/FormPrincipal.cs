@@ -18,7 +18,9 @@ namespace TP1
         public FormPrincipal()
         {
             InitializeComponent();
-            UpdateBindingSourceWithList();
+            AttacherBindingSourceaListe();
+            IntialiserSuiveursEvenements();
+
         }
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,12 +30,12 @@ namespace TP1
 
         //Functions----------------------------------------------------------------------------
 
-        public void UpdateBindingSourceWithList()
+        public void AttacherBindingSourceaListe()
         {
             ListeDeStagiaire.stagiaires = new List<Stagiaire>();
 
             /* Objets test
-            ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com", new List<Stage> { new Stage("hello", DateTime.Today, DateTime.Today, "evil", "He fucked a goat on his first shift."), new Stage("bye", DateTime.Today, DateTime.Today, "boring", "Despite killing himself after the third break his work was well done!") }));
+            ListeDeStagiaire.stagiaires.Add(new Stagiaire(1, "Alexander", "44444", "a@gmail.com", new List<Stage> { new Stage("hello", DateTime.Today, DateTime.Today, "evil", "He killed a goat on his first shift."), new Stage("bye", DateTime.Today, DateTime.Today, "boring", "Despite killing himself after the third break his work was well done!") }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(2, "Jean-Phillipe", "44444", "a@gmail.com", new List<Stage> { }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(3, "Sam", "44444", "a@gmail.com", new List<Stage> { }));
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
@@ -48,6 +50,15 @@ namespace TP1
             ListeDeStagiaire.stagiaires.Add(new Stagiaire(4, "CokieMonster", "44444", "a@gmail.com", new List<Stage> { }));
             */
             stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
+        }
+
+        private void IntialiserSuiveursEvenements()
+        {
+            SuiveursEvenements.bonneEntreesStages = new bool[4];
+            SuiveursEvenements.bonneEntreesStagiaires = new bool[4];
+            SuiveursEvenements.nouveauxChangementsStage = false;
+            SuiveursEvenements.nouveauxChangementsStagiaire = false;
+            SuiveursEvenements.travailNonSauvegarde = true;
         }
 
         private void AjouterStageAuFichierXML(string stageString)
@@ -97,6 +108,7 @@ namespace TP1
             textBoxCourriel.Text = "";
             stageBindingSource.DataSource = null;
             StagiaireSelecteur.stagiaireSel = null;
+            SuiveursEvenements.nouveauxChangementsStagiaire = false;
         }
 
         private void ActiverStageModifier()
@@ -118,8 +130,12 @@ namespace TP1
                 ctrl.Enabled = false;
             }
             errorProvider.SetError(textBoxTitre, "");
-            errorProvider.SetError(textBoxNomSuperviseur, "");
+            errorProvider.SetError(dateDateDebut, "");
+            errorProvider.SetError(dateDateFin, "");
             errorProvider.SetError(textBoxCommentaire, "");
+            dateDateDebut.Value = DateTime.Today;
+            dateDateFin.Value = DateTime.Today;
+            SuiveursEvenements.nouveauxChangementsStage = false;
         }
 
         //Boutons Charger & Sauvegard----------------------------------------------------------------------------
@@ -171,12 +187,10 @@ namespace TP1
                 }
 
                 DesactiverStagiaireModifier();
+                DesactiverStageModifier();
                 stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
                 dataGridStagiaire.Update();
                 dataGridStagiaire.Refresh();
-
-
-
             }
 
         }
@@ -189,17 +203,21 @@ namespace TP1
             {
                 DesactiverStageModifier();
                 ActiverStagiaireModifier();
-                Stagiaire stagiaireToModify = (Stagiaire)stagiaireBindingSource.Current;
-                textBoxNumero.Text = stagiaireToModify.numeroEmployee.ToString();
-                textBoxNom.Text = stagiaireToModify.nom;
-                textBoxTelephone.Text = stagiaireToModify.numeroTelephone;
-                textBoxCourriel.Text = stagiaireToModify.numeroTelephone;
+                Stagiaire stagiaireAModifier = (Stagiaire)stagiaireBindingSource.Current;
+                textBoxNumero.Text = stagiaireAModifier.numeroEmployee.ToString();
+                textBoxNom.Text = stagiaireAModifier.nom;
+                textBoxTelephone.Text = stagiaireAModifier.numeroTelephone;
+                textBoxCourriel.Text = stagiaireAModifier.numeroTelephone;
                 stageBindingSource.DataSource = new List<Stage>();
-                foreach (Stage s in stagiaireToModify.stage)
+                foreach (Stage s in stagiaireAModifier.stage)
                 {
                     stageBindingSource.Add(s);
                 }
-                StagiaireSelecteur.stagiaireSel = stagiaireToModify;
+                StagiaireSelecteur.stagiaireSel = stagiaireAModifier;
+                SuiveursEvenements.bonneEntreesStagiaires[0] = true;
+                SuiveursEvenements.bonneEntreesStagiaires[1] = true;
+                SuiveursEvenements.bonneEntreesStagiaires[2] = true;
+                SuiveursEvenements.bonneEntreesStagiaires[3] = true;
             }
         }
 
@@ -208,11 +226,16 @@ namespace TP1
             DesactiverStageModifier();
             StagiaireSelecteur.stagiaireSel = null;
             stageBindingSource.DataSource = new List<Stage>();
+            SuiveursEvenements.bonneEntreesStagiaires[0] = false;
+            SuiveursEvenements.bonneEntreesStagiaires[1] = false;
+            SuiveursEvenements.bonneEntreesStagiaires[2] = false;
+            SuiveursEvenements.bonneEntreesStagiaires[3] = false;
             ActiverStagiaireModifier();
         }
 
         private void ButtonSupprimerStagiaire_Click(object sender, EventArgs e)
         {
+            SuiveursEvenements.travailNonSauvegarde = true;
             stagiaireBindingSource.Remove(stagiaireBindingSource.Current);
             ListeDeStagiaire.stagiaires = (List<Stagiaire>)stagiaireBindingSource.DataSource;
             dataGridStage.Update();
@@ -270,6 +293,10 @@ namespace TP1
             if ((Stage)stageBindingSource.Current != null)
             {
                 ActiverStageModifier();
+                SuiveursEvenements.bonneEntreesStages[0] = true;
+                SuiveursEvenements.bonneEntreesStages[1] = true;
+                SuiveursEvenements.bonneEntreesStages[2] = true;
+                SuiveursEvenements.bonneEntreesStages[3] = true;
                 Stage stageToModify = (Stage)stageBindingSource.Current;
                 textBoxTitre.Text = stageToModify.titre;
                 dateDateDebut.Value = stageToModify.dateDebut;
@@ -284,6 +311,10 @@ namespace TP1
         private void ButtonAjouterStage_Click(object sender, EventArgs e)
         {
             ActiverStageModifier();
+            SuiveursEvenements.bonneEntreesStages[0] = false;
+            SuiveursEvenements.bonneEntreesStages[1] = true;
+            SuiveursEvenements.bonneEntreesStages[2] = false;
+            SuiveursEvenements.bonneEntreesStages[3] = false;
         }
 
         private void ButtonSupprimerStage_Click(object sender, EventArgs e)
@@ -295,59 +326,107 @@ namespace TP1
 
         private void ButtonValistagiaire_Click(object sender, EventArgs e)
         {
-            if (StagiaireSelecteur.stagiaireSel == null)
+            if (!SuiveursEvenements.bonneEntreesStagiaires[0] || !SuiveursEvenements.bonneEntreesStagiaires[1] 
+                || !SuiveursEvenements.bonneEntreesStagiaires[2] || !SuiveursEvenements.bonneEntreesStagiaires[3])
             {
-                stagiaireBindingSource.Add(new Stagiaire(int.Parse(textBoxNumero.Text), textBoxNom.Text, textBoxTelephone.Text, textBoxCourriel.Text, (List<Stage>)stageBindingSource.DataSource));
-                ListeDeStagiaire.stagiaires = (List<Stagiaire>)stagiaireBindingSource.DataSource;
+                if (!SuiveursEvenements.bonneEntreesStagiaires[0]) { this.errorProvider.SetError(textBoxNumero, "Le numero d'employe ne peut pas etre vide, plus de zero et unique."); }
+                if (!SuiveursEvenements.bonneEntreesStagiaires[1]) { this.errorProvider.SetError(textBoxNom, "Le nom ne peut pas etre vide."); }
+                if (!SuiveursEvenements.bonneEntreesStagiaires[2]) { this.errorProvider.SetError(textBoxTelephone, "Le numero de telephone doit avoir le format 123-456-7890"); }
+                if (!SuiveursEvenements.bonneEntreesStagiaires[3]) { this.errorProvider.SetError(textBoxCourriel, "Le courriel ne doit pas etre vide."); }
             }
             else
             {
-                StagiaireSelecteur.stagiaireSel.nom = textBoxNom.Text;
-                StagiaireSelecteur.stagiaireSel.numeroEmployee = int.Parse(textBoxNumero.Text);
-                StagiaireSelecteur.stagiaireSel.numeroTelephone = textBoxTelephone.Text;
-                StagiaireSelecteur.stagiaireSel.courriel = textBoxCourriel.Text;
-                StagiaireSelecteur.stagiaireSel.stage = (List<Stage>)stageBindingSource.DataSource;
-            }
-            DesactiverStageModifier();
-            DesactiverStagiaireModifier();
-            dataGridStagiaire.Update();
-            dataGridStagiaire.Refresh();
+                if (StagiaireSelecteur.stagiaireSel == null)
+                {
+                    stagiaireBindingSource.Add(new Stagiaire(int.Parse(textBoxNumero.Text), textBoxNom.Text, textBoxTelephone.Text, 
+                        textBoxCourriel.Text, (List<Stage>)stageBindingSource.DataSource));
+                    ListeDeStagiaire.stagiaires = (List<Stagiaire>)stagiaireBindingSource.DataSource;
+                }
+                else
+                {
+                    StagiaireSelecteur.stagiaireSel.nom = textBoxNom.Text;
+                    StagiaireSelecteur.stagiaireSel.numeroEmployee = int.Parse(textBoxNumero.Text);
+                    StagiaireSelecteur.stagiaireSel.numeroTelephone = textBoxTelephone.Text;
+                    StagiaireSelecteur.stagiaireSel.courriel = textBoxCourriel.Text;
+                    StagiaireSelecteur.stagiaireSel.stage = (List<Stage>)stageBindingSource.DataSource;
+                }
+                SuiveursEvenements.travailNonSauvegarde = true;
+                DesactiverStageModifier();
+                DesactiverStagiaireModifier();
+                dataGridStagiaire.Update();
+                dataGridStagiaire.Refresh();
 
+            }
         }
+
 
         private void ButtonAnnulerStagiaire_Click(object sender, EventArgs e)
         {
-            DialogResult validation = MessageBox.Show(
-                            "Voulez-vous vraiment annuler l'ajout du nouveau stagiaire? " +
-                            "Les renseignements seront perdus.",
-                            "Attention!",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning);
-
+            DialogResult validation = DialogResult.Yes;
+            if (SuiveursEvenements.nouveauxChangementsStagiaire)
+            {
+                validation = MessageBox.Show(
+                "Voulez-vous vraiment annuler l'ajout du nouveau stagiaire? " +
+                "Les renseignements seront perdus.",
+                "Attention!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            }
             if (validation is DialogResult.Yes)
             {
                 DesactiverStagiaireModifier();
+                DesactiverStageModifier();
+                errorProvider.Clear();
             }
-            DesactiverStageModifier();
-            errorProvider.Clear();
         }
 
         private void TextBoxNumero_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxNumero.Text))
             {
+                SuiveursEvenements.bonneEntreesStagiaires[0] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxNumero, "Le numero d'employe ne peut pas etre vide.");
             }
             else if(!Int32.TryParse(this.textBoxNumero.Text, out int numEmp))
             {
+                SuiveursEvenements.bonneEntreesStagiaires[0] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre un nombre.");
             }
             else
             {
-                e.Cancel = false;
-                this.errorProvider.Clear();
+                int numeroEmployeTeste = int.Parse(this.textBoxNumero.Text);
+                if(numeroEmployeTeste <= 0)
+                {
+                    SuiveursEvenements.bonneEntreesStagiaires[0] = false;
+                    e.Cancel = true;
+                    this.errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre supérieur à zéro.");
+                }
+                else
+                {
+                    bool numeroUnique = true;
+                    foreach(Stagiaire s in ListeDeStagiaire.stagiaires)
+                    {
+                        if(s.numeroEmployee == numeroEmployeTeste)
+                        {
+                            numeroUnique = false;
+                            break;
+                        }
+                    }
+                    if (numeroUnique == false)
+                    {
+                        SuiveursEvenements.bonneEntreesStagiaires[0] = false;
+                        e.Cancel = true;
+                        this.errorProvider.SetError(textBoxNumero, "Le numero d'employe doit etre unique.");
+                    }
+                    else
+                    {
+                        SuiveursEvenements.bonneEntreesStagiaires[0] = true;
+                        e.Cancel = false;
+                        this.errorProvider.SetError(textBoxNumero, "");
+                    }
+                }
             }
         }
 
@@ -355,13 +434,15 @@ namespace TP1
         {
             if (string.IsNullOrEmpty(textBoxNom.Text))
             {
+                SuiveursEvenements.bonneEntreesStagiaires[1] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxNom, "Le nom ne peut pas etre vide.");
             }
             else
             {
+                SuiveursEvenements.bonneEntreesStagiaires[1] = true;
                 e.Cancel = false;
-                this.errorProvider.Clear();
+                this.errorProvider.SetError(textBoxNom, "");
             }
         }
 
@@ -370,13 +451,15 @@ namespace TP1
             Regex telephoneRegex = new Regex(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
             if (!telephoneRegex.IsMatch(textBoxTelephone.Text))
             {
+                SuiveursEvenements.bonneEntreesStagiaires[2] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxTelephone, "Le numero de telephone doit avoir le format 123-456-7890");
             }
             else
             {
+                SuiveursEvenements.bonneEntreesStagiaires[2] = true;
                 e.Cancel = false;
-                this.errorProvider.Clear();
+                this.errorProvider.SetError(textBoxTelephone, "");
             }
         }
 
@@ -384,96 +467,204 @@ namespace TP1
         {
             if (string.IsNullOrEmpty(textBoxCourriel.Text))
             {
+                SuiveursEvenements.bonneEntreesStagiaires[3] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxCourriel, "Le courriel ne doit pas etre vide.");
             }
             else
             {
+                SuiveursEvenements.bonneEntreesStagiaires[3] = true;
                 e.Cancel = false;
-                this.errorProvider.Clear();
+                this.errorProvider.SetError(textBoxCourriel, "");
             }
-        }
-
-        private void buttonValistagiaire_Validating(object sender, CancelEventArgs e)
-        {
-            bool bonParametres = true;
         }
 
         //Boutons De Info Du Stage----------------------------------------------------------------------------
 
         private void ButtonValider_Click(object sender, EventArgs e)
         {
-            if (this.VerificationDuGroupeBoxStage())
+            if ( !SuiveursEvenements.bonneEntreesStages[0] || !SuiveursEvenements.bonneEntreesStages[1] 
+                || !SuiveursEvenements.bonneEntreesStages[2] || !SuiveursEvenements.bonneEntreesStages[3])
             {
-                if (StageSelecteur.stageSel == null)
+                if (!SuiveursEvenements.bonneEntreesStages[0]) { this.errorProvider.SetError(textBoxTitre, "Le champs titre ne doit pas etre vide."); }
+                if (!SuiveursEvenements.bonneEntreesStages[1]) { this.errorProvider.SetError(dateDateDebut, 
+                    "La première date du stage ne peut pas être antérieure à la date de création de l'entreprise. (1990-06-01)"); }
+                if (!SuiveursEvenements.bonneEntreesStages[2]) { this.errorProvider.SetError(dateDateFin,
+                        "Le dernier jour du stage ne peut être supérieur à un an à partir du premier jour.."); }
+                if (!SuiveursEvenements.bonneEntreesStages[3]) { this.errorProvider.SetError(textBoxCommentaire, "Le commentaire ne peut être trop long."); }
+            }
+            else
+            {
+                if (this.VerificationDuGroupeBoxStage())
                 {
-                    stageBindingSource.Add(new Stage(textBoxTitre.Text, dateDateDebut.Value.Date, dateDateFin.Value.Date, textBoxNomSuperviseur.Text, textBoxCommentaire.Text));
+                    if (StageSelecteur.stageSel == null)
+                    {
+                        stageBindingSource.Add(new Stage(textBoxTitre.Text, dateDateDebut.Value.Date, dateDateFin.Value.Date, textBoxNomSuperviseur.Text, textBoxCommentaire.Text));
+                    }
+                    else
+                    {
+                        StageSelecteur.stageSel.titre = textBoxTitre.Text;
+                        StageSelecteur.stageSel.dateDebut = dateDateDebut.Value;
+                        StageSelecteur.stageSel.dateFin = dateDateFin.Value;
+                        StageSelecteur.stageSel.nomSuperviseur = textBoxNomSuperviseur.Text;
+                        StageSelecteur.stageSel.commentaire = textBoxCommentaire.Text;
+                    }
+                    dataGridStage.Update();
+                    dataGridStage.Refresh();
+                    foreach (Control ctrl in groupBoxStage.Controls)
+                    {
+                        ctrl.Enabled = false;
+                    }
+                    this.textBoxTitre.Text = "";
+                    this.textBoxNomSuperviseur.Text = "";
+                    this.textBoxCommentaire.Text = "";
+                    errorProvider.Clear();
                 }
-                else
-                {
-                    StageSelecteur.stageSel.titre = textBoxTitre.Text;
-                    StageSelecteur.stageSel.dateDebut = dateDateDebut.Value;
-                    StageSelecteur.stageSel.dateFin = dateDateFin.Value;
-                    StageSelecteur.stageSel.nomSuperviseur = textBoxNomSuperviseur.Text;
-                    StageSelecteur.stageSel.commentaire = textBoxCommentaire.Text;
-                }
-                dataGridStage.Update();
-                dataGridStage.Refresh();
-                foreach (Control ctrl in groupBoxStage.Controls)
-                {
-                    ctrl.Enabled = false;
-                }
-                this.textBoxTitre.Text = "";
-                this.textBoxNomSuperviseur.Text = "";
-                this.textBoxCommentaire.Text = "";
-                errorProvider.Clear();
             }
 
         }
 
         private void ButtonAnnuler_Click(object sender, EventArgs e)
         {
-            DialogResult validation = MessageBox.Show(
-                            "Voulez-vous vraiment annuler l'ajout du nouveau stage? " +
-                            "Les renseignements seront perdus.",
-                            "Attention!",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning);
-
+            DialogResult validation = DialogResult.Yes;
+            if (SuiveursEvenements.nouveauxChangementsStagiaire)
+            {
+                validation = MessageBox.Show(
+                    "Voulez-vous vraiment annuler l'ajout du nouveau stage? " +
+                    "Les renseignements seront perdus.",
+                    "Attention!",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+            }
             if (validation is DialogResult.Yes)
             {
                 DesactiverStageModifier();
             }
+
         }
 
         private void TextBoxTitre_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(this.textBoxTitre.Text))
             {
+                SuiveursEvenements.bonneEntreesStages[0] = false;
                 e.Cancel = true;
                 this.errorProvider.SetError(textBoxTitre,
                     "Le champs titre ne doit pas etre vide.");
             }
             else
             {
+                SuiveursEvenements.bonneEntreesStages[0] = true;
                 e.Cancel = false;
-                this.errorProvider.Clear();
+                this.errorProvider.SetError(textBoxTitre, "");
             }
         }
 
-        private void TextBoxNomSuperviseur_Validating(object sender, CancelEventArgs e)
+        private void DateDateDebut_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(this.textBoxNomSuperviseur.Text))
+            DateTime dateFondation = new DateTime(1990, 06, 01);
+            if (dateDateDebut.Value < dateFondation)
             {
+                SuiveursEvenements.bonneEntreesStages[1] = false;
                 e.Cancel = true;
-                this.errorProvider.SetError(textBoxNomSuperviseur,
-                    "Le nom du superviseur ne doit pas etre vide");
+                this.errorProvider.SetError(dateDateDebut,
+                    "La première date du stage ne peut pas être antérieure à la date de création de l'entreprise. (1990-06-01)");
             }
             else
             {
+                SuiveursEvenements.bonneEntreesStages[1] = true;
                 e.Cancel = false;
-                this.errorProvider.Clear();
+                this.errorProvider.SetError(dateDateDebut, "");
             }
+        }
+
+        private void DateDateFin_Validating(object sender, CancelEventArgs e)
+        {
+            if (dateDateFin.Value <= dateDateDebut.Value)
+            {
+                SuiveursEvenements.bonneEntreesStages[2] = false;
+                e.Cancel = true;
+                this.errorProvider.SetError(dateDateFin,
+                    "Le dernier jour de stage ne peut pas être avant le premier.");
+            }
+            else
+            {
+                if (dateDateFin.Value > dateDateDebut.Value.AddYears(1))
+                {
+                    SuiveursEvenements.bonneEntreesStages[2] = false;
+                    e.Cancel = true;
+                    this.errorProvider.SetError(dateDateFin,
+                        "Le dernier jour du stage ne peut être supérieur à un an à partir du premier jour..");
+                }
+                else
+                {
+                    SuiveursEvenements.bonneEntreesStages[2] = true;
+                    e.Cancel = false;
+                    this.errorProvider.SetError(dateDateFin, "");
+                }
+            }
+        }
+
+        private void TextBoxCommentaire_Validating(object sender, CancelEventArgs e)
+        {
+            if (this.textBoxCommentaire.Text.Length > 600)
+            {
+                SuiveursEvenements.bonneEntreesStages[3] = false;
+                e.Cancel = true;
+                this.errorProvider.SetError(textBoxCommentaire,
+                    "Le commentaire ne peut être trop long.");
+            }
+            else
+            {
+                SuiveursEvenements.bonneEntreesStages[3] = true;
+                e.Cancel = false;
+                this.errorProvider.SetError(textBoxCommentaire, "");
+            }
+        }
+
+        private void TextBoxTitre_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStage = true;
+        }
+
+        private void DateDateDebut_ValueChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStage = true;
+        }
+
+        private void DateDateFin_ValueChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStage = true;
+        }
+
+        private void TextBoxNomSuperviseur_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStage = true;
+        }
+
+        private void TextBoxCommentaire_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStage = true;
+        }
+
+        private void TextBoxNumero_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStagiaire = true;
+        }
+
+        private void TextBoxNom_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStagiaire = true;
+        }
+
+        private void TextBoxTelephone_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStagiaire = true;
+        }
+
+        private void TextBoxCourriel_TextChanged(object sender, EventArgs e)
+        {
+            SuiveursEvenements.nouveauxChangementsStagiaire = true;
         }
     }
 }

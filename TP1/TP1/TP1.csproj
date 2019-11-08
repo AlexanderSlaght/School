@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StageSelecteur.cs" />
+    <Compile Include="SuiveursEvenements.cs" />
     <Compile Include="StagiaireSelecteur.cs" />
     <Compile Include="ListDeStagiaire.cs" />
     <Compile Include="Stagiaire.cs" />
