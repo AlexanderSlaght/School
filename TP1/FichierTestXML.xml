@@ -2,15 +2,15 @@
 
 <stagiaires>
 	<stagiaire numeroEmploye="1234" nom="EricTrottier" numeroTelephone="111-111-1111" courriel="EricTrottier1234@hotmail.com">
-		<stage titre="plumber" dateDebut="12-7-2019" dateFin="12-11-2019" nomSuperviseur="Madame Poire" commentaire="Ye mieux d&quot; etre bon le ptit tabarnak"></stage>
+		<stage titre="plumber" dateDebut="12-07-2019" dateFin="12-11-2019" nomSuperviseur="Madame Poire" commentaire="Ye mieux d&quot; etre bon le ptit tabarnak"></stage>
 	</stagiaire>
 
 	<stagiaire numeroEmploye="4321" nom="RiettortCire" numeroTelephone="121-232-3434" courriel="RiettortCire4321@gmail.com">
-		<stage titre="TRUIIIE" dateDebut="25-05-2019" dateFin="25-9-2019" nomSuperviseur="Lucien Bouchard" commentaire="ALALALALALALALALALALA"></stage>
+		<stage titre="TRUIIIE" dateDebut="25-05-2019" dateFin="25-09-2019" nomSuperviseur="Lucien Bouchard" commentaire="ALALALALALALALALALALA"></stage>
 	</stagiaire>
 
 	<stagiaire numeroEmploye="4321" nom="RiettortCire" numeroTelephone="121-232-3434" courriel="RiettortCire4321@gmail.com">
-		<stage titre="TRUIIIE" dateDebut="25-05-2019" dateFin="25-9-2019" nomSuperviseur="Lucien Bouchard" commentaire="ALALALALALALALALALALA"></stage>
+		<stage titre="TRUIIIE" dateDebut="25-05-2019" dateFin="25-09-2019" nomSuperviseur="Lucien Bouchard" commentaire="ALALALALALALALALALALA"></stage>
 	</stagiaire>
 
 	<stagiaire numeroEmploye="5655" nom="JoseBoudreault" numeroTelephone="666-666-6666" courriel="Qualinet@hotmail.com">

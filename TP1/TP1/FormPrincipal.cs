@@ -168,10 +168,10 @@ namespace TP1
                             xmlWriter.WriteElementString("dateFin", st.dateFin.ToString("dd-MM-yyyy"));
                             xmlWriter.WriteElementString("nomSuperviseur", st.nomSuperviseur);
                             xmlWriter.WriteElementString("commentaire", st.commentaire);
-                            //xmlWriter.WriteEndElement();
+                            xmlWriter.WriteEndElement();
                         }
                     }
-                    //xmlWriter.WriteEndElement();
+                    xmlWriter.WriteEndElement();
                 }
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteEndDocument();
@@ -197,8 +197,8 @@ namespace TP1
                             Convert.ToInt32(node.Attributes[0].InnerText),
                             node.Attributes[1].InnerText,
                             node.Attributes[2].InnerText,
-                            node.Attributes[3].InnerText, 
-                            p_listeStage : new List<Stage>());
+                            node.Attributes[3].InnerText,
+                            p_listeStage: new List<Stage>());
 
                         foreach (XmlNode cNode in node.ChildNodes)
                         {
@@ -218,11 +218,8 @@ namespace TP1
                         }
                         ListeDeStagiaire.stagiaires.Add(nouveauStagiaire);
                     }
-
                 }
-
                 DesactiverStagiaireModifier();
-                DesactiverStageModifier();
                 stagiaireBindingSource.DataSource = ListeDeStagiaire.stagiaires;
                 dataGridStagiaire.Update();
                 dataGridStagiaire.Refresh();
