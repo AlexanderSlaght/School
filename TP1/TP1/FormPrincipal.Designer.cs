@@ -32,12 +32,17 @@
             this.groupBoxListe = new System.Windows.Forms.GroupBox();
             this.buttonListeComplete = new System.Windows.Forms.Button();
             this.dataGridStagiaire = new System.Windows.Forms.DataGridView();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSupprimerStagiaire = new System.Windows.Forms.Button();
             this.buttonAjouterStagiaire = new System.Windows.Forms.Button();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
             this.groupBoxStagiaire = new System.Windows.Forms.GroupBox();
             this.dataGridStage = new System.Windows.Forms.DataGridView();
+            this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAnnulerStagiaire = new System.Windows.Forms.Button();
             this.buttonValistagiaire = new System.Windows.Forms.Button();
             this.buttonSupprimerStage = new System.Windows.Forms.Button();
@@ -68,19 +73,15 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonChargerXML = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroEmployeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.groupBoxListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.groupBoxStagiaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).BeginInit();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxListe
@@ -91,9 +92,11 @@
             this.groupBoxListe.Controls.Add(this.buttonAjouterStagiaire);
             this.groupBoxListe.Controls.Add(this.buttonRechercher);
             this.groupBoxListe.Controls.Add(this.textBoxRecherche);
-            this.groupBoxListe.Location = new System.Drawing.Point(12, 5);
+            this.groupBoxListe.Location = new System.Drawing.Point(16, 6);
+            this.groupBoxListe.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxListe.Name = "groupBoxListe";
-            this.groupBoxListe.Size = new System.Drawing.Size(282, 390);
+            this.groupBoxListe.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxListe.Size = new System.Drawing.Size(376, 480);
             this.groupBoxListe.TabIndex = 0;
             this.groupBoxListe.TabStop = false;
             this.groupBoxListe.Text = "Liste De Stagiaire";
@@ -101,7 +104,8 @@
             // buttonListeComplete
             // 
             this.buttonListeComplete.Enabled = false;
-            this.buttonListeComplete.Location = new System.Drawing.Point(76, 331);
+            this.buttonListeComplete.Location = new System.Drawing.Point(101, 407);
+            this.buttonListeComplete.Margin = new System.Windows.Forms.Padding(4);
             this.buttonListeComplete.Name = "buttonListeComplete";
             this.buttonListeComplete.Size = new System.Drawing.Size(129, 24);
             this.buttonListeComplete.TabIndex = 26;
@@ -136,9 +140,35 @@
             this.dataGridStagiaire.TabIndex = 25;
             this.dataGridStagiaire.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStagiaire_CellClick);
             // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // numeroEmployeeDataGridViewTextBoxColumn
+            // 
+            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
+            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 65F;
+            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
+            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
+            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // stagiaireBindingSource
+            // 
+            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
+            // 
             // buttonSupprimerStagiaire
             // 
-            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(147, 361);
+            this.buttonSupprimerStagiaire.Location = new System.Drawing.Point(196, 444);
+            this.buttonSupprimerStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSupprimerStagiaire.Name = "buttonSupprimerStagiaire";
             this.buttonSupprimerStagiaire.Size = new System.Drawing.Size(129, 23);
             this.buttonSupprimerStagiaire.TabIndex = 3;
@@ -148,7 +178,8 @@
             // 
             // buttonAjouterStagiaire
             // 
-            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(6, 361);
+            this.buttonAjouterStagiaire.Location = new System.Drawing.Point(8, 444);
+            this.buttonAjouterStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAjouterStagiaire.Name = "buttonAjouterStagiaire";
             this.buttonAjouterStagiaire.Size = new System.Drawing.Size(135, 23);
             this.buttonAjouterStagiaire.TabIndex = 1;
@@ -158,7 +189,8 @@
             // 
             // buttonRechercher
             // 
-            this.buttonRechercher.Location = new System.Drawing.Point(201, 302);
+            this.buttonRechercher.Location = new System.Drawing.Point(268, 372);
+            this.buttonRechercher.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRechercher.Name = "buttonRechercher";
             this.buttonRechercher.Size = new System.Drawing.Size(75, 23);
             this.buttonRechercher.TabIndex = 0;
@@ -168,7 +200,8 @@
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(6, 305);
+            this.textBoxRecherche.Location = new System.Drawing.Point(8, 375);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(189, 20);
             this.textBoxRecherche.TabIndex = 0;
@@ -189,9 +222,11 @@
             this.groupBoxStagiaire.Controls.Add(this.textBoxNumero);
             this.groupBoxStagiaire.Controls.Add(this.labelNom);
             this.groupBoxStagiaire.Controls.Add(this.labelNumero);
-            this.groupBoxStagiaire.Location = new System.Drawing.Point(300, 5);
+            this.groupBoxStagiaire.Location = new System.Drawing.Point(400, 6);
+            this.groupBoxStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxStagiaire.Name = "groupBoxStagiaire";
-            this.groupBoxStagiaire.Size = new System.Drawing.Size(282, 439);
+            this.groupBoxStagiaire.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxStagiaire.Size = new System.Drawing.Size(376, 540);
             this.groupBoxStagiaire.TabIndex = 1;
             this.groupBoxStagiaire.TabStop = false;
             this.groupBoxStagiaire.Text = "Info du Stagiaire";
@@ -222,6 +257,18 @@
             this.dataGridStage.TabIndex = 24;
             this.dataGridStage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridStage_CellClick);
             // 
+            // titreDataGridViewTextBoxColumn
+            // 
+            this.titreDataGridViewTextBoxColumn.DataPropertyName = "titre";
+            this.titreDataGridViewTextBoxColumn.HeaderText = "Titre :";
+            this.titreDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.titreDataGridViewTextBoxColumn.Name = "titreDataGridViewTextBoxColumn";
+            this.titreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stageBindingSource
+            // 
+            this.stageBindingSource.DataSource = typeof(TP1.Stage);
+            // 
             // buttonAnnulerStagiaire
             // 
             this.buttonAnnulerStagiaire.Enabled = false;
@@ -249,7 +296,8 @@
             // buttonSupprimerStage
             // 
             this.buttonSupprimerStage.Enabled = false;
-            this.buttonSupprimerStage.Location = new System.Drawing.Point(143, 367);
+            this.buttonSupprimerStage.Location = new System.Drawing.Point(191, 452);
+            this.buttonSupprimerStage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSupprimerStage.Name = "buttonSupprimerStage";
             this.buttonSupprimerStage.Size = new System.Drawing.Size(111, 23);
             this.buttonSupprimerStage.TabIndex = 4;
@@ -260,7 +308,8 @@
             // buttonAjouterStage
             // 
             this.buttonAjouterStage.Enabled = false;
-            this.buttonAjouterStage.Location = new System.Drawing.Point(15, 367);
+            this.buttonAjouterStage.Location = new System.Drawing.Point(20, 452);
+            this.buttonAjouterStage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAjouterStage.Name = "buttonAjouterStage";
             this.buttonAjouterStage.Size = new System.Drawing.Size(117, 23);
             this.buttonAjouterStage.TabIndex = 4;
@@ -298,7 +347,8 @@
             // textBoxCourriel
             // 
             this.textBoxCourriel.Enabled = false;
-            this.textBoxCourriel.Location = new System.Drawing.Point(119, 94);
+            this.textBoxCourriel.Location = new System.Drawing.Point(159, 116);
+            this.textBoxCourriel.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCourriel.Name = "textBoxCourriel";
             this.textBoxCourriel.Size = new System.Drawing.Size(146, 20);
             this.textBoxCourriel.TabIndex = 5;
@@ -308,7 +358,8 @@
             // textBoxTelephone
             // 
             this.textBoxTelephone.Enabled = false;
-            this.textBoxTelephone.Location = new System.Drawing.Point(119, 68);
+            this.textBoxTelephone.Location = new System.Drawing.Point(159, 84);
+            this.textBoxTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTelephone.Name = "textBoxTelephone";
             this.textBoxTelephone.Size = new System.Drawing.Size(146, 20);
             this.textBoxTelephone.TabIndex = 4;
@@ -318,7 +369,8 @@
             // textBoxNom
             // 
             this.textBoxNom.Enabled = false;
-            this.textBoxNom.Location = new System.Drawing.Point(119, 42);
+            this.textBoxNom.Location = new System.Drawing.Point(159, 52);
+            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(146, 20);
             this.textBoxNom.TabIndex = 3;
@@ -328,7 +380,8 @@
             // textBoxNumero
             // 
             this.textBoxNumero.Enabled = false;
-            this.textBoxNumero.Location = new System.Drawing.Point(119, 16);
+            this.textBoxNumero.Location = new System.Drawing.Point(159, 20);
+            this.textBoxNumero.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(146, 20);
             this.textBoxNumero.TabIndex = 2;
@@ -367,9 +420,11 @@
             this.groupBoxStage.Controls.Add(this.labelDateFin);
             this.groupBoxStage.Controls.Add(this.textBoxTitre);
             this.groupBoxStage.Controls.Add(this.textBoxNomSuperviseur);
-            this.groupBoxStage.Location = new System.Drawing.Point(588, 5);
+            this.groupBoxStage.Location = new System.Drawing.Point(784, 6);
+            this.groupBoxStage.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxStage.Name = "groupBoxStage";
-            this.groupBoxStage.Size = new System.Drawing.Size(282, 439);
+            this.groupBoxStage.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxStage.Size = new System.Drawing.Size(376, 540);
             this.groupBoxStage.TabIndex = 2;
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Info du Stage";
@@ -423,7 +478,8 @@
             // textBoxCommentaire
             // 
             this.textBoxCommentaire.Enabled = false;
-            this.textBoxCommentaire.Location = new System.Drawing.Point(9, 138);
+            this.textBoxCommentaire.Location = new System.Drawing.Point(12, 170);
+            this.textBoxCommentaire.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCommentaire.Name = "textBoxCommentaire";
             this.textBoxCommentaire.Size = new System.Drawing.Size(256, 238);
             this.textBoxCommentaire.TabIndex = 18;
@@ -479,7 +535,8 @@
             // textBoxTitre
             // 
             this.textBoxTitre.Enabled = false;
-            this.textBoxTitre.Location = new System.Drawing.Point(119, 16);
+            this.textBoxTitre.Location = new System.Drawing.Point(159, 20);
+            this.textBoxTitre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTitre.Name = "textBoxTitre";
             this.textBoxTitre.Size = new System.Drawing.Size(146, 20);
             this.textBoxTitre.TabIndex = 11;
@@ -489,7 +546,8 @@
             // textBoxNomSuperviseur
             // 
             this.textBoxNomSuperviseur.Enabled = false;
-            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(119, 94);
+            this.textBoxNomSuperviseur.Location = new System.Drawing.Point(159, 116);
+            this.textBoxNomSuperviseur.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNomSuperviseur.Name = "textBoxNomSuperviseur";
             this.textBoxNomSuperviseur.Size = new System.Drawing.Size(146, 20);
             this.textBoxNomSuperviseur.TabIndex = 14;
@@ -497,7 +555,8 @@
             // 
             // buttonSauvegard
             // 
-            this.buttonSauvegard.Location = new System.Drawing.Point(159, 401);
+            this.buttonSauvegard.Location = new System.Drawing.Point(212, 494);
+            this.buttonSauvegard.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSauvegard.Name = "buttonSauvegard";
             this.buttonSauvegard.Size = new System.Drawing.Size(135, 43);
             this.buttonSauvegard.TabIndex = 4;
@@ -511,7 +570,8 @@
             // 
             // buttonChargerXML
             // 
-            this.buttonChargerXML.Location = new System.Drawing.Point(12, 401);
+            this.buttonChargerXML.Location = new System.Drawing.Point(16, 494);
+            this.buttonChargerXML.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChargerXML.Name = "buttonChargerXML";
             this.buttonChargerXML.Size = new System.Drawing.Size(135, 43);
             this.buttonChargerXML.TabIndex = 5;
@@ -525,42 +585,9 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "xml file |*.xml| text file |*.txt";
             // 
-            // titreDataGridViewTextBoxColumn
+            // saveFileDialog
             // 
-            this.titreDataGridViewTextBoxColumn.DataPropertyName = "titre";
-            this.titreDataGridViewTextBoxColumn.HeaderText = "Titre :";
-            this.titreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.titreDataGridViewTextBoxColumn.Name = "titreDataGridViewTextBoxColumn";
-            this.titreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stageBindingSource
-            // 
-            this.stageBindingSource.DataSource = typeof(TP1.Stage);
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom :";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // numeroEmployeeDataGridViewTextBoxColumn
-            // 
-            this.numeroEmployeeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numeroEmployeeDataGridViewTextBoxColumn.DataPropertyName = "numeroEmployee";
-            this.numeroEmployeeDataGridViewTextBoxColumn.FillWeight = 65F;
-            this.numeroEmployeeDataGridViewTextBoxColumn.HeaderText = "# d\'employé :";
-            this.numeroEmployeeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Name = "numeroEmployeeDataGridViewTextBoxColumn";
-            this.numeroEmployeeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroEmployeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // stagiaireBindingSource
-            // 
-            this.stagiaireBindingSource.DataSource = typeof(TP1.Stagiaire);
+            this.saveFileDialog.DefaultExt = "xml";
             // 
             // FormPrincipal
             // 
@@ -568,13 +595,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(883, 450);
+            this.ClientSize = new System.Drawing.Size(1162, 547);
             this.Controls.Add(this.buttonChargerXML);
             this.Controls.Add(this.buttonSauvegard);
             this.Controls.Add(this.groupBoxStage);
             this.Controls.Add(this.groupBoxStagiaire);
             this.Controls.Add(this.groupBoxListe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPrincipal";
@@ -584,14 +612,14 @@
             this.groupBoxListe.ResumeLayout(false);
             this.groupBoxListe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStagiaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.groupBoxStagiaire.ResumeLayout(false);
             this.groupBoxStagiaire.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).EndInit();
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -642,6 +670,7 @@
         private System.Windows.Forms.Button buttonListeComplete;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroEmployeeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

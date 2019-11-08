@@ -58,3 +58,13 @@ C:\Users\the85\source\repos\TP1-Clone\TP1\TP1\obj\Debug\TP1.csproj.GenerateResou
 C:\Users\the85\source\repos\TP1-Clone\TP1\TP1\obj\Debug\TP1.csproj.CoreCompileInputs.cache
 C:\Users\the85\source\repos\TP1-Clone\TP1\TP1\obj\Debug\TP1.exe
 C:\Users\the85\source\repos\TP1-Clone\TP1\TP1\obj\Debug\TP1.pdb
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\bin\Debug\TP1.exe.config
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\bin\Debug\TP1.exe
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\bin\Debug\TP1.pdb
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.csprojAssemblyReference.cache
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.FormPrincipal.resources
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.Properties.Resources.resources
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.csproj.GenerateResource.cache
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.csproj.CoreCompileInputs.cache
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.exe
+C:\Users\the85\source\repos\FuckingTP1\TP1\TP1\obj\Debug\TP1.pdb
