@@ -126,7 +126,42 @@ namespace TP1
 
         private void ButtonSauvegard_Click(object sender, EventArgs e)
         {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                XmlTextWriter xmlWriter = new XmlTextWriter(fileName, System.Text.Encoding.UTF8);
+                xmlWriter.WriteStartDocument();
 
+                //root node
+                xmlWriter.WriteStartElement("stagiaires");
+                foreach (Stagiaire stagiaire in ListeDeStagiaire.stagiaires)
+                {
+                    xmlWriter.WriteStartElement("stagiaire");
+                    xmlWriter.WriteElementString("numeroEmploye", Convert.ToString(stagiaire.numeroEmployee));
+                    xmlWriter.WriteElementString("nom", stagiaire.nom);
+                    xmlWriter.WriteElementString("numeroTelephone", stagiaire.numeroTelephone);
+                    xmlWriter.WriteElementString("courriel", stagiaire.courriel);
+
+                    if (stagiaire.stage != null)
+                    {
+                        foreach (Stage st in stagiaire.stage)
+                        {
+                            xmlWriter.WriteStartElement("stage");
+                            xmlWriter.WriteElementString("titre", st.titre);
+                            xmlWriter.WriteElementString("dateDebut", st.dateDebut.ToString("dd-MM-yyyy"));
+                            xmlWriter.WriteElementString("dateFin", st.dateFin.ToString("dd-MM-yyyy"));
+                            xmlWriter.WriteElementString("nomSuperviseur", st.nomSuperviseur);
+                            xmlWriter.WriteElementString("commentaire", st.commentaire);
+                            //xmlWriter.WriteEndElement();
+                        }
+                    }
+                    //xmlWriter.WriteEndElement();
+                }
+                xmlWriter.WriteEndElement();
+                xmlWriter.WriteEndDocument();
+                xmlWriter.Flush();
+                xmlWriter.Close();
+            }
         }
 
         private void ButtonChargerXML_Click(object sender, EventArgs e)
